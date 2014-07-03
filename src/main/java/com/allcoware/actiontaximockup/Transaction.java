@@ -17,6 +17,8 @@
  */
 package com.allcoware.actiontaximockup;
 
+import java.time.Instant;
+
 /**
  *
  * @author alfred
@@ -28,8 +30,19 @@ public class Transaction {
     private static java.time.Instant transactionInstant;
     CustomMoney amount;
     
+    public java.time.Instant getInstant(){
+       return transactionInstant;
+    }
     
+    public void setInstant(Instant instant){
+        
+    }
     
+    public CustomMoney getAmount(){
+        return amount;
+    }
     
-    
+    public void setAmount(CustomMoney amount){
+        
+    }    
 }

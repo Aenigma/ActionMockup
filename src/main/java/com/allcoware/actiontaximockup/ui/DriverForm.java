@@ -1,4 +1,4 @@
- /*
+/*
  * Copyright (C) 2014 Jon Butler, Sam Morekas,
  *     Rushikesh Parekh, and Kevin Raoofi
  *
@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup;
+package com.allcoware.actiontaximockup.ui;
 
-import java.time.Instant;
+import com.allcoware.actiontaximockup.Driver;
 
 /**
  *
@@ -25,33 +25,21 @@ import java.time.Instant;
  */
 
 
-public class RecurringTransaction {
+public class DriverForm {
     
-    private static java.time.Instant startingInstant;
-    CustomMoney capAmount;
-    CustomMoney periodicAmount;
+    private Driver driver;
+    TransactionFormFactory tff;
+    RecurringTransactionFormFactory rtff;
     
-    public java.time.Instant getStartingInstant(){
-        return startingInstant;
-    } 
-    
-    public void setStartingInstant(Instant instant){
+    public boolean isReady(){
         
     }
     
-    public CustomMoney getAmount(){
-        return capAmount;
+    public Driver getResource(){
+        return driver;
     }
     
-    public void setCapAmount(CustomMoney amount){
-        
-    }
-    
-    public CustomMoney getPeriodicAmount(){
-        return periodicAmount;
-    }
-    
-    public void setPeriodicAmount(CustomMoney amount){
+    public void updateFields(){
         
     }
 }

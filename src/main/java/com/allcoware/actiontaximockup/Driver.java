@@ -38,6 +38,91 @@ public class Driver {
     private static Collection<Transaction> transaction;
     private static Collection<RecurringTransaction> recurringTransactions;
     
+    private long getNumber(){
+        return number;
+    }
+        
+    private void setNumber(long number){
+        
+    }
     
+    private Cab getCab(){
+        return cab;
+    }
     
-}
+    private void setCab (Cab cab){
+        
+    }
+    
+    private CustomMoney getMoney(){
+        return money;
+    }
+    
+    private void setMoney(CustomMoney money){
+        
+    }
+    
+    private String getFirstName(){
+        return firstName;
+    }
+    
+    private void setFirstName(String firstName){
+        
+    }
+    
+    private String getMiddleName(){
+        return middleName;
+    }
+    
+    private void setMiddleName(String middleName){
+        
+    }
+    
+    private String getLastName(){
+        return lastName;
+    }
+    
+    private void setLastName(String lastName){
+        
+    }
+    
+    private String getPhone(){
+        return phone;
+    }
+    
+    private void setPhone(String phone){
+        
+    }
+    
+    private Collection<Transaction> getTransaction(){
+        return transaction;
+    }
+    
+    private void setTransaction(Collection<Transaction>  transaction){
+        
+    }
+    
+    private void addTransaction(Transaction t){
+        
+    }
+    
+    private void removeTransaction(Transaction t){
+        
+    } 
+    
+    private Collection<RecurringTransaction> getReurringTransactions(){
+        return recurringTransactions;
+    }
+    
+    private void setRecurringTransaction(Collection<RecurringTransaction> transactions){
+        
+    }
+    
+    private void addRecurringTransaction(RecurringTransaction t){
+        
+    }
+    
+    private void removeRecurringTransaction(RecurringTransaction t){
+        
+    }    
+    }

@@ -1,4 +1,4 @@
- /*
+/*
  * Copyright (C) 2014 Jon Butler, Sam Morekas,
  *     Rushikesh Parekh, and Kevin Raoofi
  *
@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup;
+package com.allcoware.actiontaximockup.ui;
 
-import java.time.Instant;
+import java.util.Map;
 
 /**
  *
@@ -25,33 +25,15 @@ import java.time.Instant;
  */
 
 
-public class RecurringTransaction {
+public class CabFormFactory {
     
-    private static java.time.Instant startingInstant;
-    CustomMoney capAmount;
-    CustomMoney periodicAmount;
+    private Map<Long,Cab> formMap;
     
-    public java.time.Instant getStartingInstant(){
-        return startingInstant;
-    } 
-    
-    public void setStartingInstant(Instant instant){
+    public CabForm getForm(Long key){
         
     }
     
-    public CustomMoney getAmount(){
-        return capAmount;
-    }
-    
-    public void setCapAmount(CustomMoney amount){
-        
-    }
-    
-    public CustomMoney getPeriodicAmount(){
-        return periodicAmount;
-    }
-    
-    public void setPeriodicAmount(CustomMoney amount){
+    public CabForm makeNewForm(){
         
     }
 }

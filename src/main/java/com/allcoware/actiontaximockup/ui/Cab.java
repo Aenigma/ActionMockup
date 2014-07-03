@@ -24,5 +24,5 @@ package com.allcoware.actiontaximockup.ui;
 
 
 public class Cab {
-    
+    private long cabID;
 }
