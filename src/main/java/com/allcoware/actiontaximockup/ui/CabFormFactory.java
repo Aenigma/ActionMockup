@@ -23,17 +23,16 @@ import java.util.Map;
  *
  * @author alfred
  */
+public class CabFormFactory implements ResourceFormFactory {
 
+    private Map<Long, Cab> formMap;
 
-public class CabFormFactory {
-    
-    private Map<Long,Cab> formMap;
-    
-    public CabForm getForm(Long key){
-        
+    //this method should use "Long" not object but it won't except it... 
+    public JResourceForm<CabForm> getForm(Object key) {
+        return null;
     }
-    
-    public CabForm makeNewForm(){
-        
+
+    public JResourceForm<CabForm> makeNewForm() {
+        return null;
     }
 }

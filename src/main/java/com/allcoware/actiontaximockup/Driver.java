@@ -17,112 +17,205 @@
  */
 package com.allcoware.actiontaximockup;
 
-import com.allcoware.actiontaximockup.ui.Cab;
 import java.util.Collection;
 
 /**
+ * This class holds the main information for a driver being phone number, full
+ * name, cap ID, and transactions.
  *
  * @author alfred
  */
-
-
 public class Driver {
-    
-    private static long number;
-    Cab cab;
+
+    private long number;
+    com.allcoware.actiontaximockup.ui.Cab cab;
     CustomMoney money;
-    private static String firstName;
-    private static String middleName;
-    private static String lastName;
-    private static String phone;
-    private static Collection<Transaction> transaction;
-    private static Collection<RecurringTransaction> recurringTransactions;
-    
-    private long getNumber(){
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String phone;
+    private Collection<Transaction> transaction;
+    private Collection<RecurringTransaction> recurringTransactions;
+
+    /**
+     * Retrieves driver's ID number
+     *
+     * @return driver's number
+     */
+    public long getNumber() {
         return number;
     }
-        
-    private void setNumber(long number){
-        
+
+    /**
+     * Sets driver's ID number
+     *
+     * @param number
+     */
+    public void setNumber(long number) {
+        this.number = number;
     }
-    
-    private Cab getCab(){
+
+    /**
+     * Retrieves driver's cab info
+     *
+     * @return driver's Cab
+     */
+    public com.allcoware.actiontaximockup.ui.Cab getCab() {
         return cab;
     }
-    
-    private void setCab (Cab cab){
-        
+
+    /**
+     * Sets driver's cab info
+     *
+     * @param cab
+     */
+    public void setCab(com.allcoware.actiontaximockup.ui.Cab cab) {
+        this.cab = cab;
     }
-    
-    private CustomMoney getMoney(){
+
+    /**
+     * Returns driver's money info
+     *
+     * @return money
+     */
+    public CustomMoney getMoney() {
         return money;
     }
-    
-    private void setMoney(CustomMoney money){
-        
+
+    /**
+     * Set's driver's money info
+     *
+     * @param money
+     */
+    public void setMoney(CustomMoney money) {
+        this.money = money;
     }
-    
-    private String getFirstName(){
+
+    /**
+     * Retrieves driver's first name
+     *
+     * @return driver's first name
+     */
+    public String getFirstName() {
         return firstName;
     }
-    
-    private void setFirstName(String firstName){
-        
+
+    /**
+     * Set's driver's first name
+     *
+     * @param firstName
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    
-    private String getMiddleName(){
+
+    /**
+     * Retrieves driver's middle name
+     *
+     * @return driver's middle name
+     */
+    public String getMiddleName() {
         return middleName;
     }
-    
-    private void setMiddleName(String middleName){
-        
+
+    /**
+     * Set's driver's middle name
+     *
+     * @param middleName
+     */
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
-    
-    private String getLastName(){
+
+    /**
+     * Retrieves driver's last name
+     *
+     * @return driver's last name
+     */
+    public String getLastName() {
         return lastName;
     }
-    
-    private void setLastName(String lastName){
-        
+
+    /**
+     * Set's driver's last name
+     *
+     * @param lastName
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-    
-    private String getPhone(){
+
+    /**
+     * Retrieves driver's phone number
+     *
+     * @return driver's phone number
+     */
+    public String getPhone() {
         return phone;
     }
-    
-    private void setPhone(String phone){
-        
+
+    /**
+     * Set's driver's phone number
+     *
+     * @param phone
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-    
-    private Collection<Transaction> getTransaction(){
+
+    /**
+     * Retrieves driver's transaction
+     *
+     * @return driver's transaction
+     */
+    public Collection<Transaction> getTransaction() {
         return transaction;
     }
-    
-    private void setTransaction(Collection<Transaction>  transaction){
-        
+
+    /**
+     * Sets driver's transaction
+     *
+     * @param transaction
+     */
+    public void setTransaction(Collection<Transaction> transaction) {
+        this.transaction = transaction;
     }
-    
-    private void addTransaction(Transaction t){
-        
+
+    //add resource
+    public void addTransaction(Transaction t) {
+
     }
-    
-    private void removeTransaction(Transaction t){
-        
-    } 
-    
-    private Collection<RecurringTransaction> getReurringTransactions(){
+
+    //search to find prexisting recurringTransaction resource, if found remove resource
+    public void removeTransaction(Transaction t) {
+
+    }
+
+    /**
+     * Retrieves driver's recurring transaction
+     *
+     * @return driver's recurring transaction's
+     */
+    public Collection<RecurringTransaction> getReurringTransactions() {
         return recurringTransactions;
     }
-    
-    private void setRecurringTransaction(Collection<RecurringTransaction> transactions){
-        
+
+    /**
+     * Sets driver's recurring transaction
+     *
+     * @param recurringTransaction
+     */
+    public void setRecurringTransaction(Collection<RecurringTransaction> recurringTransaction) {
+        this.recurringTransactions = recurringTransaction;
     }
-    
-    private void addRecurringTransaction(RecurringTransaction t){
-        
+
+    //add resource
+    public void addRecurringTransaction(RecurringTransaction t) {
+
     }
-    
-    private void removeRecurringTransaction(RecurringTransaction t){
-        
-    }    
+
+    //search to find prexisting recurringTransaction resource, if found remove resource
+    public void removeRecurringTransaction(RecurringTransaction t) {
+
     }
+}

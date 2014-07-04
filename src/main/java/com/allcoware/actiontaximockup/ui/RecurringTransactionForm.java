@@ -21,21 +21,19 @@ package com.allcoware.actiontaximockup.ui;
  *
  * @author alfred
  */
+public class RecurringTransactionForm implements ResourceBuilder {
 
+    private com.allcoware.actiontaximockup.RecurringTransaction recurringTransaction;
 
-public class RecurringTransactionForm {
-    
-    private RecurringTransaction recurringTransaction;
-    
-    public Boolean isReady(){
-        
+    public boolean isReady() {
+        return false;
     }
-    
-    public Driver getResource(){
-        
+
+    public com.allcoware.actiontaximockup.Driver getResource() {
+        return null;
     }
-    
-    public void updateFields(){
-        
+
+    public void updateFields() {
+
     }
 }

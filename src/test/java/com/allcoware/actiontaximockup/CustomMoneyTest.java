@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.allcoware.actiontaximockup;
 
 import java.math.BigDecimal;
@@ -34,25 +33,25 @@ import static org.junit.Assert.*;
  * @author Kevin Raoofi
  */
 public class CustomMoneyTest {
-    
+
     CustomMoney main;
-    
+
     public CustomMoneyTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-         main = new CustomMoney(BigDecimal.TEN);
+        main = new CustomMoney(BigDecimal.TEN);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -128,7 +127,7 @@ public class CustomMoneyTest {
         CustomMoney result = main.divide(o);
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of equals method, of class CustomMoney.
      */
@@ -140,7 +139,7 @@ public class CustomMoneyTest {
         boolean expResult1 = false;
         boolean result1 = instance1.equals(obj1);
         assertEquals(expResult1, result1);
-        
+
         Object obj2 = new CustomMoney("00019.55");
         CustomMoney instance2 = new CustomMoney("019.550");
         boolean expResult2 = true;
@@ -167,11 +166,12 @@ public class CustomMoneyTest {
         System.out.println("compareTo");
         CustomMoney o = new CustomMoney("20");
         Integer result = main.compareTo(o);
-        assertThat(result, org.hamcrest.CoreMatchers.is(new BaseMatcher<Integer>(){
+        assertThat(result, org.hamcrest.CoreMatchers.is(new BaseMatcher<Integer>() {
             @Override
             public boolean matches(Object item) {
-                if (!(item instanceof Integer))
+                if (!(item instanceof Integer)) {
                     return false;
+                }
                 Integer i = (Integer) item;
                 return i.compareTo(0) < 0;
             }
@@ -182,5 +182,5 @@ public class CustomMoneyTest {
             }
         }));
     }
-    
+
 }

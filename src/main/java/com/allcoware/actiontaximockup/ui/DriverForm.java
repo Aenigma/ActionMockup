@@ -17,29 +17,27 @@
  */
 package com.allcoware.actiontaximockup.ui;
 
-import com.allcoware.actiontaximockup.Driver;
-
 /**
+ * This class retrieves driver main information, driver's transaction
+ * information, and driver's recurring transaction.
  *
  * @author alfred
  */
+public class DriverForm implements ResourceBuilder {
 
-
-public class DriverForm {
-    
-    private Driver driver;
+    private com.allcoware.actiontaximockup.Driver driver;
     TransactionFormFactory tff;
     RecurringTransactionFormFactory rtff;
-    
-    public boolean isReady(){
-        
+
+    public boolean isReady() {
+        return false;
     }
-    
-    public Driver getResource(){
+
+    public com.allcoware.actiontaximockup.Driver getResource() {
         return driver;
     }
-    
-    public void updateFields(){
-        
+
+    public void updateFields() {
+
     }
 }

@@ -20,29 +20,48 @@ package com.allcoware.actiontaximockup;
 import java.time.Instant;
 
 /**
+ * This class holds the information on a driver's transaction.
  *
  * @author alfred
  */
-
-
 public class Transaction {
-    
-    private static java.time.Instant transactionInstant;
+
+    private java.time.Instant transactionInstant;
     CustomMoney amount;
-    
-    public java.time.Instant getInstant(){
-       return transactionInstant;
+
+    /**
+     * This method returns the transaction instant/time
+     *
+     * @return transaction instant
+     */
+    public java.time.Instant getInstant() {
+        return transactionInstant;
     }
-    
-    public void setInstant(Instant instant){
-        
+
+    /**
+     * This method sets the transaction instant/time
+     *
+     * @param transactionInstant
+     */
+    public void setInstant(Instant transactionInstant) {
+        this.transactionInstant = transactionInstant;
     }
-    
-    public CustomMoney getAmount(){
+
+    /**
+     * This method returns the amount (receipt of transaction)
+     *
+     * @return amount
+     */
+    public CustomMoney getAmount() {
         return amount;
     }
-    
-    public void setAmount(CustomMoney amount){
-        
-    }    
+
+    /**
+     * This method sets amount (receipt of transaction)
+     *
+     * @param amount
+     */
+    public void setAmount(CustomMoney amount) {
+        this.amount = amount;
+    }
 }

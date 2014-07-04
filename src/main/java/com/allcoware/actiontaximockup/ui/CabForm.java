@@ -21,21 +21,24 @@ package com.allcoware.actiontaximockup.ui;
  *
  * @author alfred
  */
+public class CabForm implements ResourceBuilder {
 
-
-public class CabForm {
-    
     public Cab driver;
-    
-    public Boolean isReady(){
-        
+
+    public boolean isReady() {
+        return false;
     }
-    
-    public Driver getResource(){
-        
+
+    /**
+     * Retrieves driver
+     *
+     * @return
+     */
+    public Cab getResource() {
+        return driver;
     }
-    
-    public void updateFields(){
-        
+
+    public void updateFields() {
+
     }
 }

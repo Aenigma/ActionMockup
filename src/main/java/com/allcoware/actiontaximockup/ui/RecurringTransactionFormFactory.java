@@ -17,24 +17,22 @@
  */
 package com.allcoware.actiontaximockup.ui;
 
-import com.allcoware.actiontaximockup.RecurringTransaction;
 import java.util.Map;
 
 /**
  *
  * @author alfred
  */
+public class RecurringTransactionFormFactory implements ResourceFormFactory {
 
+    private Map<Long, com.allcoware.actiontaximockup.RecurringTransaction> formMap;
 
-public class RecurringTransactionFormFactory {
-    
-    private Map<Long,RecurringTransaction> formMap;
-    
-    public RecurringTransactionForm getForm(Long key){
-        
+    //this method should use "Long" not object but it won't except it... 
+    public JResourceForm<RecurringTransactionForm> getForm(Object key) {
+        return null;
     }
-    
-    public RecurringTransactionForm makeNewForm(){
-        
+
+    public JResourceForm<RecurringTransactionForm> makeNewForm() {
+        return null;
     }
 }
