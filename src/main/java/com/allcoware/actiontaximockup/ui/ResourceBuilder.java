@@ -33,7 +33,7 @@ public interface ResourceBuilder<R> {
      * {@link #getResource()}
      *
      * @return true if the form is completed and the resource being built is
-     *         ready to fetched
+     * ready to fetched
      */
     public boolean isReady();
 

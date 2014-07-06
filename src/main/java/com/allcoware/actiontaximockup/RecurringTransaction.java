@@ -20,38 +20,67 @@ package com.allcoware.actiontaximockup;
 import java.time.Instant;
 
 /**
+ * This class holds the information on a driver's recurring transaction's.
  *
  * @author alfred
  */
-
-
 public class RecurringTransaction {
-    
-    private static java.time.Instant startingInstant;
+
+    private java.time.Instant startingInstant;
     CustomMoney capAmount;
     CustomMoney periodicAmount;
-    
-    public java.time.Instant getStartingInstant(){
+
+    /**
+     * Retrieves stating instant/time
+     *
+     * @return starting instant
+     */
+    public java.time.Instant getStartingInstant() {
         return startingInstant;
-    } 
-    
-    public void setStartingInstant(Instant instant){
-        
     }
-    
-    public CustomMoney getAmount(){
+
+    /**
+     * Sets stating instant/time
+     *
+     * @param startingInstant
+     */
+    public void setStartingInstant(Instant startingInstant) {
+        this.startingInstant = startingInstant;
+    }
+
+    /**
+     * Retrieves cap amount
+     *
+     * @return cap amount
+     */
+    public CustomMoney getAmount() {
         return capAmount;
     }
-    
-    public void setCapAmount(CustomMoney amount){
-        
+
+    /**
+     * Sets cap amount
+     *
+     * @param capAmount
+     */
+    public void setCapAmount(CustomMoney capAmount) {
+        this.capAmount = capAmount;
     }
-    
-    public CustomMoney getPeriodicAmount(){
+
+    /**
+     * Retrieves periodic amount
+     *
+     * @return periodic amount
+     */
+    public CustomMoney getPeriodicAmount() {
         return periodicAmount;
     }
-    
-    public void setPeriodicAmount(CustomMoney amount){
-        
+
+    /**
+     * Sets periodic amount
+     *
+     * @param periodicAmount
+     */
+    public void setPeriodicAmount(CustomMoney periodicAmount) {
+        this.periodicAmount = periodicAmount;
     }
 }

@@ -21,19 +21,10 @@ package com.allcoware.actiontaximockup.ui;
  *
  * @author alfred
  */
-public class TransactionForm implements ResourceBuilder {
+public class DriverMenu extends JResourceMenu {
 
-    private com.allcoware.actiontaximockup.Transaction transaction;
-
-    public boolean isReady() {
-        return false;
+    public DriverMenu(ResourceFormFactory formFactory) {
+        super(formFactory);
     }
 
-    public com.allcoware.actiontaximockup.Driver getResource() {
-        return null;
-    }
-
-    public void updateFields() {
-
-    }
 }

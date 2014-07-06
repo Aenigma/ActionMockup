@@ -17,24 +17,22 @@
  */
 package com.allcoware.actiontaximockup.ui;
 
-import com.allcoware.actiontaximockup.Driver;
 import java.util.Map;
 
 /**
  *
  * @author alfred
  */
+public class DriverFormFactory implements ResourceFormFactory {
 
+    private Map<Long, com.allcoware.actiontaximockup.Driver> getForm;
 
-public class DriverFormFactory {
-    
-    private Map<Long,Driver> getForm;
-    
-    public DriverForm getForm(Long key){
-        
+    //this method should use "Long" not object but it won't except it... 
+    public JResourceForm<DriverForm> getForm(Object key) {
+        return null;
     }
-    
-    public DriverForm makeNewForm(){
-        
+
+    public JResourceForm<DriverForm> makeNewForm() {
+        return null;
     }
 }

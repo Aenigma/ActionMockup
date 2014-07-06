@@ -18,11 +18,12 @@
 package com.allcoware.actiontaximockup.ui;
 
 /**
+ * This class currently only holds the Cab ID number, but it can be modified as
+ * necessary later on
  *
  * @author alfred
  */
-
-
 public class Cab {
+
     private long cabID;
 }

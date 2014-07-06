@@ -45,8 +45,7 @@ package com.allcoware.actiontaximockup.ui;
  * @author Kevin Raoofi
  * @param <R> the resource handled by the instance
  * @param <K> the key used to fetch the appropriate resource; should probably be
- *            a {@code Long}, but can be whatever the unique ID for the resource
- *            should be
+ * a {@code Long}, but can be whatever the unique ID for the resource should be
  */
 public interface ResourceFormFactory<K, R> {
 
@@ -56,7 +55,7 @@ public interface ResourceFormFactory<K, R> {
      *
      * @param key used to look up a pre-existing resource
      * @return a form responsible for the resource instance. If the resource
-     *         does not exist, returns null
+     * does not exist, returns null
      */
     JResourceForm<R> getForm(K key);
 
