@@ -43,6 +43,9 @@ public abstract class JResourceMenu<K, R> extends JComponent {
      */
     protected JResourceMenu(ResourceFormFactory<K, R> formFactory) {
         this.formFactory = formFactory;
+        
+        
+        
     }
 
 }

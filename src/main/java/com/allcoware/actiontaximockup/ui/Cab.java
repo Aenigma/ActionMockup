@@ -26,4 +26,12 @@ package com.allcoware.actiontaximockup.ui;
 public class Cab {
 
     private long cabID;
-}
+    
+    public void setCabID(long cabID){
+        this.cabID=cabID;
+    }
+    
+    public long getCabID(){
+        return cabID;
+    }
+  }

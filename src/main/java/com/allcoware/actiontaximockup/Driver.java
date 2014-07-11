@@ -26,7 +26,7 @@ import java.util.Collection;
  * @author alfred
  */
 public class Driver {
-
+    
     private long number;
     com.allcoware.actiontaximockup.ui.Cab cab;
     CustomMoney money;
@@ -34,8 +34,8 @@ public class Driver {
     private String middleName;
     private String lastName;
     private String phone;
-    private Collection<Transaction> transaction;
-    private Collection<RecurringTransaction> recurringTransactions;
+    private  static Collection<Transaction> transaction;
+    private static Collection<RecurringTransaction> recurringTransactions;
 
     /**
      * Retrieves driver's ID number
@@ -181,14 +181,14 @@ public class Driver {
         this.transaction = transaction;
     }
 
-    //add resource
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void addTransaction(Transaction t) {
-
+        transaction.add(t);
     }
 
-    //search to find prexisting recurringTransaction resource, if found remove resource
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void removeTransaction(Transaction t) {
-
+        transaction.remove(t);
     }
 
     /**
@@ -209,13 +209,13 @@ public class Driver {
         this.recurringTransactions = recurringTransaction;
     }
 
-    //add resource
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void addRecurringTransaction(RecurringTransaction t) {
-
+        recurringTransactions.add(t);
     }
 
-    //search to find prexisting recurringTransaction resource, if found remove resource
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void removeRecurringTransaction(RecurringTransaction t) {
-
+        recurringTransactions.remove(t);
     }
 }
