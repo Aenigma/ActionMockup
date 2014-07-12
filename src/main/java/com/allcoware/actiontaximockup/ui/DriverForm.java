@@ -17,6 +17,7 @@
  */
 package com.allcoware.actiontaximockup.ui;
 
+import com.allcoware.actiontaximockup.Driver;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -36,9 +37,10 @@ import javax.swing.JTextField;
  *
  * @author alfred
  */
-public class DriverForm implements ResourceBuilder {
+public class DriverForm extends JResourceForm<Driver> {
 
-    private com.allcoware.actiontaximockup.Driver driver;
+    private Driver driver;
+    
     private TransactionFormFactory tff;
     private RecurringTransactionFormFactory rtff;
     private JFrame frame;
@@ -50,11 +52,18 @@ public class DriverForm implements ResourceBuilder {
     private JTextField phoNum;
     private JComboBox cab;
 
+    public DriverForm(Driver driver) {
+        this.driver = driver;
+    }
+    
+    public DriverForm() {
+    }
+
     public boolean isReady() {
         return false;
     }
 
-    public com.allcoware.actiontaximockup.Driver getResource() {
+    public Driver getResource() {
         return driver;
     }
 
