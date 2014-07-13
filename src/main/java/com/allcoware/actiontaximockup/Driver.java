@@ -34,8 +34,8 @@ public class Driver {
     private String middleName;
     private String lastName;
     private String phone;
-    private  static Collection<Transaction> transaction;
-    private static Collection<RecurringTransaction> recurringTransactions;
+    private Collection<Transaction> transaction;
+    private Collection<RecurringTransaction> recurringTransactions;
 
     /**
      * Retrieves driver's ID number
