@@ -17,7 +17,10 @@
  */
 package com.allcoware.actiontaximockup;
 
+import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.Instant;
+import static java.time.temporal.ChronoUnit.*;
 
 /**
  * This class holds the information on a driver's recurring transaction's.
@@ -26,9 +29,35 @@ import java.time.Instant;
  */
 public class RecurringTransaction {
 
-    private java.time.Instant startingInstant;
-    CustomMoney capAmount;
-    CustomMoney periodicAmount;
+    // TODO: add suport for creating Transactions
+    
+    private Instant startingInstant;
+    private Duration timeToPay;
+    private CustomMoney capAmount;
+    private CustomMoney periodicAmount;
+
+    /**
+     * Creates an instance starting from now, with a duration of one day, $0 to
+     * pay, and $0 paid periodically
+     */
+    public RecurringTransaction() {
+        this(Instant.now(), Duration.of(1, DAYS), new CustomMoney(new BigDecimal(0)), new CustomMoney(new BigDecimal(0)));
+    }
+
+    /**
+     * Creates an instance with the specified properties
+     * 
+     * @param startingInstant when payments should start
+     * @param timeToPay time to wait until the next payment is demanded
+     * @param capAmount maximum amount to pay
+     * @param periodicAmount time to wait until the next payment is scheduled
+     */
+    public RecurringTransaction(Instant startingInstant, Duration timeToPay, CustomMoney capAmount, CustomMoney periodicAmount) {
+        this.startingInstant = startingInstant;
+        this.timeToPay = timeToPay;
+        this.capAmount = capAmount;
+        this.periodicAmount = periodicAmount;
+    }
 
     /**
      * Retrieves stating instant/time
@@ -48,6 +77,23 @@ public class RecurringTransaction {
         this.startingInstant = startingInstant;
     }
 
+    /** 
+     * Gets time to wait until the next payment is demanded
+     * @return time to wait until the next payment is demanded 
+     */
+    public Duration getTimeToPay() {
+        return timeToPay;
+    }
+
+    /**
+     * Sets time to wait until the next payment is demanded
+     * 
+     * @param timeToPay time to wait until the next payment is demanded
+     */
+    public void setTimeToPay(Duration timeToPay) {
+        this.timeToPay = timeToPay;
+    }
+    
     /**
      * Retrieves cap amount
      *
@@ -83,4 +129,5 @@ public class RecurringTransaction {
     public void setPeriodicAmount(CustomMoney periodicAmount) {
         this.periodicAmount = periodicAmount;
     }
+
 }
