@@ -19,30 +19,23 @@ package com.allcoware.actiontaximockup.ui;
 
 // this list of variables and imports is insanity and will be cleared up once the class is functioning sufficently 
 import com.allcoware.actiontaximockup.Driver;
-import com.allcoware.actiontaximockup.DriverHolder;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  * this class is (for the moment) the main class however I don't want that much
@@ -109,7 +102,7 @@ public class TableMaker {
      */
     public JPanel groupBuilderSearchBox() {
 
-        ArrayList<com.allcoware.actiontaximockup.Driver> driver = com.allcoware.actiontaximockup.DriverHolder.getList();
+        List<Driver> driver = new ArrayList<>();
 
         Dimension dem = new Dimension();
         dem.setSize(150, 1);
@@ -362,8 +355,8 @@ public class TableMaker {
      * Collection to fill in the main site table rows
      */
     public void addMainFormRows() {
-        ArrayList<com.allcoware.actiontaximockup.Driver> driver = com.allcoware.actiontaximockup.DriverHolder.getList();
-        Object cabID;
+        List<Driver> driver = new ArrayList<>();
+        Long cabID;
 
         for (int i = 0; i < driver.size(); i++) {
             if (driver.get(i).getCab() == null) {
@@ -389,7 +382,7 @@ public class TableMaker {
      * @param location
      */
     public void addRecurringTransactionFormRows(int location) {
-        ArrayList<com.allcoware.actiontaximockup.Driver> driver = com.allcoware.actiontaximockup.DriverHolder.getList();
+        List<Driver> driver = new ArrayList<>();
         if (driver.get(location).getReurringTransactions() != null) {
             ArrayList<com.allcoware.actiontaximockup.RecurringTransaction> retrans = (ArrayList<com.allcoware.actiontaximockup.RecurringTransaction>) driver.get(location).getReurringTransactions();
 
@@ -413,7 +406,7 @@ public class TableMaker {
      * @param location
      */
     public void addTransactionFormRows(int location) {
-        ArrayList<com.allcoware.actiontaximockup.Driver> driver = com.allcoware.actiontaximockup.DriverHolder.getList();
+        List<Driver> driver = new ArrayList<>();
         if (driver.get(location).getTransaction() != null) {
             ArrayList<com.allcoware.actiontaximockup.Transaction> trans = (ArrayList<com.allcoware.actiontaximockup.Transaction>) driver.get(location).getTransaction();
 
