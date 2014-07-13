@@ -33,6 +33,11 @@ public class CabForm extends JResourceForm<Cab> {
     public CabForm() {
         initComponents();
     }
+    
+    public CabForm(Cab cab) {
+        this();
+        this.cab = cab;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

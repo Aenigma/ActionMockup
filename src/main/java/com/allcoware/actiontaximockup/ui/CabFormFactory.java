@@ -19,21 +19,31 @@ package com.allcoware.actiontaximockup.ui;
 
 import com.allcoware.actiontaximockup.Cab;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
  * @author alfred
+ * @author Kevin Raoofi
  */
-public class CabFormFactory implements ResourceFormFactory {
+public class CabFormFactory implements ResourceFormFactory<Long, Cab> {
 
-    private Map<Long, Cab> formMap;
+    private final Map<Long, Cab> formMap;
+    private transient long count;
 
-    //this method should use "Long" not object but it won't except it... 
-    public JResourceForm<CabForm> getForm(Object key) {
-        return null;
+    public CabFormFactory() {
+        this.formMap = new TreeMap<>();
+        this.count = 0;
     }
 
-    public JResourceForm<CabForm> makeNewForm() {
-        return null;
+    @Override
+    public ResourceBuilder<Cab> getForm(Long key) {
+        return new CabForm(formMap.get(key));
+    }
+
+    @Override
+    public ResourceBuilder<Cab> makeNewForm() {
+        this.formMap.put(count, new Cab());
+        return new CabForm(this.formMap.get(count++));
     }
 }
