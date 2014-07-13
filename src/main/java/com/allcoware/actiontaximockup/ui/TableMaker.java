@@ -289,7 +289,7 @@ public class TableMaker {
             @Override
             public void actionPerformed(ActionEvent event) {
                 cabForm = new CabForm();
-                cabForm.addNewCab(frame);
+                //cabForm.addNewCab(frame);
             }
         });
         return addNewCab;
