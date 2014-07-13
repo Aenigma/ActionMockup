@@ -264,7 +264,7 @@ public class TableMaker {
             @Override
             public void actionPerformed(ActionEvent event) {
                 driverForm = new DriverForm();
-                driverForm.addNewDriver(frame);
+                //driverForm.addNewDriver(frame);
             }
         });
         return addNewDriver;
@@ -304,7 +304,7 @@ public class TableMaker {
             @Override
             public void actionPerformed(ActionEvent event) {
                 driverForm = new DriverForm();
-                driverForm.editForm(frame, "Edit Form");
+                //driverForm.editForm(frame, "Edit Form");
             }
         });
         return editForm;
