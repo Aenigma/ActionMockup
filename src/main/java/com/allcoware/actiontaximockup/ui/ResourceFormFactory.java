@@ -57,7 +57,7 @@ public interface ResourceFormFactory<K, R> {
      * @return a form responsible for the resource instance. If the resource
      * does not exist, returns null
      */
-    JResourceForm<R> getForm(K key);
+    ResourceBuilder<R> getForm(K key);
 
     /**
      * A new resource is added and tracked by the class. The key for this new
@@ -67,5 +67,5 @@ public interface ResourceFormFactory<K, R> {
      *
      * @return
      */
-    JResourceForm<R> makeNewForm();
+    ResourceBuilder<R> makeNewForm();
 }

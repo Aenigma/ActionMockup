@@ -16,7 +16,6 @@
         That way multiple projects can share the same settings (useful for formatting rules for example).
         Any value defined here will override the pom.xml file value but is only applicable to the current project.
         -->
-        <netbeans.hint.license>gplallcoware</netbeans.hint.license>
         <netbeans.hint.jdkPlatform>JDK_1.8</netbeans.hint.jdkPlatform>
         <de-markiewb-netbeans-plugins-eclipse-formatter.showNotifications>true</de-markiewb-netbeans-plugins-eclipse-formatter.showNotifications>
         <de-markiewb-netbeans-plugins-eclipse-formatter.useProjectSettings>false</de-markiewb-netbeans-plugins-eclipse-formatter.useProjectSettings>
@@ -24,5 +23,6 @@
         <de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterEnabled>false</de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterEnabled>
         <de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterLocation/>
         <de-markiewb-netbeans-plugins-eclipse-formatter.enableFormatAsSaveAction>false</de-markiewb-netbeans-plugins-eclipse-formatter.enableFormatAsSaveAction>
+        <netbeans.hint.licensePath>${project.basedir}/license-gplallcoware.txt</netbeans.hint.licensePath>
     </properties>
 </project-shared-configuration>

@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup;
 
 /**
  * This class currently only holds the Cab ID number, but it can be modified as
@@ -26,4 +26,12 @@ package com.allcoware.actiontaximockup.ui;
 public class Cab {
 
     private long cabID;
-}
+    
+    public void setCabID(long cabID){
+        this.cabID=cabID;
+    }
+    
+    public long getCabID(){
+        return cabID;
+    }
+  }
