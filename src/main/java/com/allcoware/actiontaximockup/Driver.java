@@ -28,7 +28,7 @@ import java.util.Collection;
 public class Driver {
     
     private long number;
-    com.allcoware.actiontaximockup.ui.Cab cab;
+    com.allcoware.actiontaximockup.Cab cab;
     CustomMoney money;
     private String firstName;
     private String middleName;
@@ -60,7 +60,7 @@ public class Driver {
      *
      * @return driver's Cab
      */
-    public com.allcoware.actiontaximockup.ui.Cab getCab() {
+    public com.allcoware.actiontaximockup.Cab getCab() {
         return cab;
     }
 
@@ -69,7 +69,7 @@ public class Driver {
      *
      * @param cab
      */
-    public void setCab(com.allcoware.actiontaximockup.ui.Cab cab) {
+    public void setCab(com.allcoware.actiontaximockup.Cab cab) {
         this.cab = cab;
     }
 

@@ -17,6 +17,7 @@
  */
 package com.allcoware.actiontaximockup.ui;
 
+import com.allcoware.actiontaximockup.Cab;
 import com.allcoware.actiontaximockup.Driver;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -32,17 +33,20 @@ import javax.swing.JTextField;
 
 /**
  * This class retrieves driver main information, driver's transaction
- * information, and driver's recurring transaction. I edited this class for the
- * gui creation.
+ * information, and driver's recurring transaction.
+ *
+ * This class doubles as a UI component and can be added to an external panel
  *
  * @author alfred
  */
 public class DriverForm extends JResourceForm<Driver> {
 
     private Driver driver;
-    
+
     private TransactionFormFactory tff;
     private RecurringTransactionFormFactory rtff;
+    
+    // TODO: remove composition with inheritance solution
     private JFrame frame;
     private JPanel panel;
     private JTextField driNum;
@@ -55,7 +59,7 @@ public class DriverForm extends JResourceForm<Driver> {
     public DriverForm(Driver driver) {
         this.driver = driver;
     }
-    
+
     public DriverForm() {
     }
 
@@ -71,6 +75,7 @@ public class DriverForm extends JResourceForm<Driver> {
 
     }
 
+    // TODO: remove below and convert UI to composing into internal container
     /**
      * this method creates the pop out window containing basic/specified driver
      * data
