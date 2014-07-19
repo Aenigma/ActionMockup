@@ -15,25 +15,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.ui.resourceholders;
+
+import com.allcoware.actiontaximockup.ui.guiinterfaces.JResourceForm;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.RecurringTransactionForm;
+import java.util.Map;
 
 /**
  *
  * @author alfred
  */
-public class TransactionForm implements ResourceBuilder {
+public class RecurringTransactionFormFactory implements ResourceFormFactory {
 
-    private com.allcoware.actiontaximockup.Transaction transaction;
+    private Map<Long, com.allcoware.actiontaximockup.resources.RecurringTransaction> formMap;
 
-    public boolean isReady() {
-        return false;
-    }
-
-    public com.allcoware.actiontaximockup.Driver getResource() {
+    //this method should use "Long" not object but it won't except it... 
+    public JResourceForm<RecurringTransactionForm> getForm(Object key) {
         return null;
     }
 
-    public void updateFields() {
-
+    public JResourceForm<RecurringTransactionForm> makeNewForm() {
+        return null;
+    }
+    
+    public Map getMap(){
+        return formMap;
     }
 }

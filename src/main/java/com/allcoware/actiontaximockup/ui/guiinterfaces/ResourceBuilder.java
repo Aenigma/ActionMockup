@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.ui.guiinterfaces;
 
 /**
  * A class implementing this interface should build an instance of the resource

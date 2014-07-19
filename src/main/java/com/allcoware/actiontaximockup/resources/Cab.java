@@ -15,25 +15,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.resources;
 
 /**
+ * This class currently only holds the Cab ID number, but it can be modified as
+ * necessary later on
  *
  * @author alfred
  */
-public class RecurringTransactionForm implements ResourceBuilder {
+public class Cab {
 
-    private com.allcoware.actiontaximockup.RecurringTransaction recurringTransaction;
-
-    public boolean isReady() {
-        return false;
+    private long cabID;
+    
+    public void setCabID(long cabID){
+        this.cabID=cabID;
     }
-
-    public com.allcoware.actiontaximockup.Driver getResource() {
-        return null;
+    
+    public long getCabID(){
+        return cabID;
     }
-
-    public void updateFields() {
-
-    }
-}
+  }

@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup;
+package com.allcoware.actiontaximockup.resources;
 
 import java.util.Collection;
 
@@ -28,7 +28,7 @@ import java.util.Collection;
 public class Driver {
     
     private long number;
-    com.allcoware.actiontaximockup.Cab cab;
+    com.allcoware.actiontaximockup.resources.Cab cab;
     CustomMoney money;
     private String firstName;
     private String middleName;
@@ -60,7 +60,7 @@ public class Driver {
      *
      * @return driver's Cab
      */
-    public com.allcoware.actiontaximockup.Cab getCab() {
+    public com.allcoware.actiontaximockup.resources.Cab getCab() {
         return cab;
     }
 
@@ -69,7 +69,7 @@ public class Driver {
      *
      * @param cab
      */
-    public void setCab(com.allcoware.actiontaximockup.Cab cab) {
+    public void setCab(com.allcoware.actiontaximockup.resources.Cab cab) {
         this.cab = cab;
     }
 

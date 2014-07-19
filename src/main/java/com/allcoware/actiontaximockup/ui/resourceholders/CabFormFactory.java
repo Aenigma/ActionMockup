@@ -15,9 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.ui.resourceholders;
 
-import com.allcoware.actiontaximockup.Cab;
+import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
+import com.allcoware.actiontaximockup.resources.Cab;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.CabForm;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.ResourceBuilder;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -45,5 +48,9 @@ public class CabFormFactory implements ResourceFormFactory<Long, Cab> {
     public ResourceBuilder<Cab> makeNewForm() {
         this.formMap.put(count, new Cab());
         return new CabForm(this.formMap.get(count++));
+    }
+    
+    public Map getMap(){
+        return formMap;
     }
 }

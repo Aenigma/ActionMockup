@@ -15,9 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.ui.resourceholders;
 
-import com.allcoware.actiontaximockup.Driver;
+import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
+import com.allcoware.actiontaximockup.resources.Driver;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.DriverForm;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.JResourceForm;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -46,5 +49,9 @@ public class DriverFormFactory implements ResourceFormFactory<Long, Driver> {
     public JResourceForm<Driver> makeNewForm() {
         this.formMap.put(count, new Driver());
         return new DriverForm(this.formMap.get(count++));
+    }
+    
+    public Map getMap(){
+        return formMap;
     }
 }

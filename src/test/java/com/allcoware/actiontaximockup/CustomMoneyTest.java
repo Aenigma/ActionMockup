@@ -17,6 +17,7 @@
  */
 package com.allcoware.actiontaximockup;
 
+import com.allcoware.actiontaximockup.resources.CustomMoney;
 import java.math.BigDecimal;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;

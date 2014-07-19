@@ -15,10 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.helpers;
 
 // this list of variables and imports is insanity and will be cleared up once the class is functioning sufficently 
-import com.allcoware.actiontaximockup.Driver;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.CabForm;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.DriverForm;
+import com.allcoware.actiontaximockup.resources.Driver;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -59,6 +61,7 @@ public class TableMaker {
     private JTextField text;
 
     public TableMaker() {
+        
     }
 
     /**
@@ -180,6 +183,9 @@ public class TableMaker {
     public JScrollPane createMainFormTable() {
         TitledBorder border = BorderFactory.createTitledBorder("Bookkeeping");
         model = new DefaultTableModel();
+        
+        
+        
         table = new JTable(model) {
             public boolean isCellEditable(int data, int columns) {
                 return false;
@@ -189,7 +195,15 @@ public class TableMaker {
         addMainFormRows();
         JScrollPane scroll = new JScrollPane(table);
         scroll.setBorder(border);
+        
+        
+        
+        table.setModel( new DefaultTableModel());
+        
+        
         return scroll;
+        
+        
     }
 
     /**
@@ -263,7 +277,7 @@ public class TableMaker {
         addNewDriver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                driverForm = new DriverForm();
+                //driverForm = new DriverForm();
                 //driverForm.addNewDriver(frame);
             }
         });
@@ -303,7 +317,7 @@ public class TableMaker {
         editForm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                driverForm = new DriverForm();
+                //driverForm = new DriverForm();
                 //driverForm.editForm(frame, "Edit Form");
             }
         });
@@ -384,7 +398,7 @@ public class TableMaker {
     public void addRecurringTransactionFormRows(int location) {
         List<Driver> driver = new ArrayList<>();
         if (driver.get(location).getReurringTransactions() != null) {
-            ArrayList<com.allcoware.actiontaximockup.RecurringTransaction> retrans = (ArrayList<com.allcoware.actiontaximockup.RecurringTransaction>) driver.get(location).getReurringTransactions();
+            ArrayList<com.allcoware.actiontaximockup.resources.RecurringTransaction> retrans = (ArrayList<com.allcoware.actiontaximockup.resources.RecurringTransaction>) driver.get(location).getReurringTransactions();
 
             for (int i = 0; i < retrans.size(); i++) {
                 Object[] obj = new Object[]{
@@ -408,7 +422,7 @@ public class TableMaker {
     public void addTransactionFormRows(int location) {
         List<Driver> driver = new ArrayList<>();
         if (driver.get(location).getTransaction() != null) {
-            ArrayList<com.allcoware.actiontaximockup.Transaction> trans = (ArrayList<com.allcoware.actiontaximockup.Transaction>) driver.get(location).getTransaction();
+            ArrayList<com.allcoware.actiontaximockup.resources.Transaction> trans = (ArrayList<com.allcoware.actiontaximockup.resources.Transaction>) driver.get(location).getTransaction();
 
             for (int i = 0; i < trans.size(); i++) {
                 Object[] obj = new Object[]{

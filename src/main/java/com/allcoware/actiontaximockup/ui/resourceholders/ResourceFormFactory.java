@@ -1,4 +1,6 @@
-package com.allcoware.actiontaximockup.ui;
+package com.allcoware.actiontaximockup.ui.resourceholders;
+
+import com.allcoware.actiontaximockup.ui.guiinterfaces.ResourceBuilder;
 
 /*
  * Copyright (C) 2014 Jon Butler, Sam Morekas, Rushikesh Parekh, and Kevin
