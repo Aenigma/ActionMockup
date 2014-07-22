@@ -18,17 +18,24 @@
 
 package com.allcoware.actiontaximockup.ui.guiinterfaces;
 
+import com.allcoware.actiontaximockup.resources.Driver;
+import com.allcoware.actiontaximockup.resources.Transaction;
+
 /**
  *
  * @author alfred
  */
-public class TransactionForm extends javax.swing.JPanel {
+public class TransactionForm extends JResourceForm<Transaction> {
 
     /**
      * Creates new form TransactionForm
      */
     public TransactionForm() {
         initComponents();
+    }
+    
+    public TransactionForm(Transaction t) {
+        this();
     }
 
     /**
@@ -199,4 +206,16 @@ public class TransactionForm extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public boolean isReady() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Transaction getResource() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

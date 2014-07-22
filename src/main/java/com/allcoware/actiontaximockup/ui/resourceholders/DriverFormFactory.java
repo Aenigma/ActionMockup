@@ -17,41 +17,21 @@
  */
 package com.allcoware.actiontaximockup.ui.resourceholders;
 
-import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
 import com.allcoware.actiontaximockup.resources.Driver;
 import com.allcoware.actiontaximockup.ui.guiinterfaces.DriverForm;
 import com.allcoware.actiontaximockup.ui.guiinterfaces.JResourceForm;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.ResourceBuilder;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Generates DriverForm instances and keeps track of 
+ * Generates DriverForm instances and keeps track of
  *
  * @author alfred
  * @author Kevin Raoofi
  */
-public class DriverFormFactory implements ResourceFormFactory<Long, Driver> {
-
-    private final Map<Long, Driver> formMap;
-    private transient long count;
-
+public class DriverFormFactory extends MappedFormFactory<Driver, JResourceForm<Driver>> {
     public DriverFormFactory() {
-        this.formMap = new TreeMap<>();
-        count = 0;
-    }
-
-    @Override
-    public JResourceForm<Driver> getForm(Long key) {
-        return new DriverForm(formMap.get(key));
-    }
-
-    @Override
-    public JResourceForm<Driver> makeNewForm() {
-        this.formMap.put(count, new Driver());
-        return new DriverForm(this.formMap.get(count++));
-    }
-    
-    public Map getMap(){
-        return formMap;
+        super(DriverForm::new, Driver::new);
     }
 }

@@ -17,40 +17,17 @@
  */
 package com.allcoware.actiontaximockup.ui.resourceholders;
 
-import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
 import com.allcoware.actiontaximockup.resources.Cab;
 import com.allcoware.actiontaximockup.ui.guiinterfaces.CabForm;
-import com.allcoware.actiontaximockup.ui.guiinterfaces.ResourceBuilder;
-import java.util.Map;
-import java.util.TreeMap;
+import com.allcoware.actiontaximockup.ui.guiinterfaces.JResourceForm;
 
 /**
  *
  * @author alfred
  * @author Kevin Raoofi
  */
-public class CabFormFactory implements ResourceFormFactory<Long, Cab> {
-
-    private final Map<Long, Cab> formMap;
-    private transient long count;
-
+public class CabFormFactory extends MappedFormFactory<Cab, JResourceForm<Cab>> {
     public CabFormFactory() {
-        this.formMap = new TreeMap<>();
-        this.count = 0;
-    }
-
-    @Override
-    public ResourceBuilder<Cab> getForm(Long key) {
-        return new CabForm(formMap.get(key));
-    }
-
-    @Override
-    public ResourceBuilder<Cab> makeNewForm() {
-        this.formMap.put(count, new Cab());
-        return new CabForm(this.formMap.get(count++));
-    }
-    
-    public Map getMap(){
-        return formMap;
+        super(CabForm::new, Cab::new);
     }
 }

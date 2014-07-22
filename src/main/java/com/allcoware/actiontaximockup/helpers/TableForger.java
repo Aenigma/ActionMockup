@@ -264,25 +264,25 @@ public class TableForger extends javax.swing.JPanel {
             while (row <= columnNames.length) {
                 if (row == 0) {
                     //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//year
-                } else if (row == 1) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//month
-                } else if (row == 2) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//day
-                } else if (row == 3) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//hour
-                } else if (row == 4) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//minute
-                } else if (row == 5) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getPeriodicAmount(). ?  ?  ?  ?  ?  ?;//periodic amount
-                } else if (row == 6) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getCapAmount(). ?  ?  ?  ?  ?  ?;//cap amount
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//year
+//                } else if (row == 1) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//month
+//                } else if (row == 2) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//day
+//                } else if (row == 3) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//hour
+//                } else if (row == 4) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//minute
+//                } else if (row == 5) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getPeriodicAmount(). ?  ?  ?  ?  ?  ?;//periodic amount
+//                } else if (row == 6) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = recurringForm.getForm(Long.MIN_VALUE).getResouce().getRecurringTransactions().getCapAmount(). ?  ?  ?  ?  ?  ?;//cap amount
                 }
                 row++;
             }
@@ -295,22 +295,22 @@ public class TableForger extends javax.swing.JPanel {
             while (row <= columnNames.length) {
                 if (row == 0) {
                     //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//year
-                } else if (row == 1) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//month
-                } else if (row == 2) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//day
-                } else if (row == 3) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//hour
-                } else if (row == 4) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//minute
-                } else if (row == 5) {
-                    //ok so I have no Idea how to get what I want out of this....
-                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getAmount(). ?  ?  ?  ?  ?  ?;//amount
+//                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//year
+//                } else if (row == 1) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//month
+//                } else if (row == 2) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//day
+//                } else if (row == 3) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//hour
+//                } else if (row == 4) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getStartingInstant(). ?  ?  ?  ?  ?  ?;//minute
+//                } else if (row == 5) {
+//                    //ok so I have no Idea how to get what I want out of this....
+//                    data[column][row] = transactionForm.getForm(Long.MIN_VALUE).getResouce().getTransactions().getAmount(). ?  ?  ?  ?  ?  ?;//amount
                 }
                 row++;
             }

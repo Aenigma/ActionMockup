@@ -17,29 +17,16 @@
  */
 package com.allcoware.actiontaximockup.ui.resourceholders;
 
+import com.allcoware.actiontaximockup.resources.Transaction;
 import com.allcoware.actiontaximockup.ui.guiinterfaces.JResourceForm;
-import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
 import com.allcoware.actiontaximockup.ui.guiinterfaces.TransactionForm;
-import java.util.Map;
 
 /**
  *
  * @author alfred
  */
-public class TransactionFormFactory implements ResourceFormFactory {
-
-    private Map<Long, com.allcoware.actiontaximockup.resources.Transaction> formMap;
-
-    //this method should use "Long" not object but it won't except it... 
-    public JResourceForm<TransactionForm> getForm(Object key) {
-        return null;
-    }
-
-    public JResourceForm<TransactionForm> makeNewForm() {
-        return null;
-    }
-    
-    public Map getMap(){
-        return formMap;
+public class TransactionFormFactory extends MappedFormFactory<Transaction, JResourceForm<Transaction>> {
+    public TransactionFormFactory() {
+        super(TransactionForm::new, Transaction::new);
     }
 }
