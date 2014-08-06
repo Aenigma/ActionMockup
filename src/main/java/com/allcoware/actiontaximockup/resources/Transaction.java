@@ -18,6 +18,7 @@
 package com.allcoware.actiontaximockup.resources;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * This class holds the information on a driver's transaction.
@@ -64,4 +65,32 @@ public class Transaction {
     public void setAmount(CustomMoney amount) {
         this.amount = amount;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.transactionInstant);
+        hash = 53 * hash + Objects.hashCode(this.amount);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Transaction other = (Transaction) obj;
+        if (!Objects.equals(this.transactionInstant, other.transactionInstant)) {
+            return false;
+        }
+        if (!Objects.equals(this.amount, other.amount)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

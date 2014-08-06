@@ -166,10 +166,15 @@ public final class CustomMoney implements Comparable<CustomMoney> {
         return true;
     }
 
+    /**
+     * The String representation returns a format that is valid for
+     * {@link #CustomMoney(java.lang.String)}.
+     *
+     * @return String representation of the instance
+     */
     @Override
     public String toString() {
         StringBuilder rst = new StringBuilder();
-        rst.append(usd.getSymbol());
         rst.append(amount.toString());
         return rst.toString();
     }

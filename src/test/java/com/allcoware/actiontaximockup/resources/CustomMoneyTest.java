@@ -15,19 +15,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup;
+package com.allcoware.actiontaximockup.resources;
 
-import com.allcoware.actiontaximockup.resources.CustomMoney;
+import com.allcoware.actiontaximockup.resources.beanutils.CustomMoneyConverter;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
+import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -154,7 +155,7 @@ public class CustomMoneyTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        String expResult = "$10.00";
+        String expResult = "10.00";
         String result = main.toString();
         assertEquals(expResult, result);
     }
@@ -167,21 +168,33 @@ public class CustomMoneyTest {
         System.out.println("compareTo");
         CustomMoney o = new CustomMoney("20");
         Integer result = main.compareTo(o);
-        assertThat(result, org.hamcrest.CoreMatchers.is(new BaseMatcher<Integer>() {
-            @Override
-            public boolean matches(Object item) {
-                if (!(item instanceof Integer)) {
-                    return false;
-                }
-                Integer i = (Integer) item;
-                return i.compareTo(0) < 0;
-            }
+        assertThat(result, org.hamcrest.CoreMatchers.is(
+                new BaseMatcher<Integer>() {
+                    @Override
+                    public boolean matches(Object item) {
+                        if (!(item instanceof Integer)) {
+                            return false;
+                        }
+                        Integer i = (Integer) item;
+                        return i.compareTo(0) < 0;
+                    }
 
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Must be less than");
-            }
-        }));
+                    @Override
+                    public void describeTo(Description description) {
+                        description.appendText("Must be less than");
+                    }
+                }));
     }
 
+    @Test
+    public void testBean() throws IllegalAccessException,
+            InvocationTargetException, NoSuchMethodException,
+            InstantiationException {
+        System.out.println("Testing Bean");
+        CustomMoney o = new CustomMoney("20");
+        ConvertUtilsBean cub = new ConvertUtilsBean();
+        cub.register(new CustomMoneyConverter(), CustomMoney.class);
+        assertEquals(o, cub.convert("20", CustomMoney.class));
+        assertEquals(o, cub.convert(o, CustomMoney.class));
+    }
 }
