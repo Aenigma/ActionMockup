@@ -1,5 +1,6 @@
-package com.allcoware.actiontaximockup.ui.guiinterfaces;
+package com.allcoware.actiontaximockup.ui;
 
+import com.allcoware.actiontaximockup.ui.resources.ResourceBuilder;
 import javax.swing.JComponent;
 
 /*

@@ -15,12 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.helpers;
+package com.allcoware.actiontaximockup.utils;
 
 import com.allcoware.actiontaximockup.resources.CustomMoney;
 import com.allcoware.actiontaximockup.resources.Transaction;
-import com.allcoware.actiontaximockup.resources.beanutils.CustomMoneyConverter;
-import com.allcoware.actiontaximockup.resources.beanutils.InstantConverter;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.logging.Level;

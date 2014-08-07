@@ -17,7 +17,7 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
-import com.allcoware.actiontaximockup.resources.beanutils.CustomMoneyConverter;
+import com.allcoware.actiontaximockup.utils.CustomMoneyConverter;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import org.apache.commons.beanutils.ConvertUtilsBean;

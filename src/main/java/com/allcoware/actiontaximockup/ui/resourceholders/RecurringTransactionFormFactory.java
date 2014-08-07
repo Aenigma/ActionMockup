@@ -17,8 +17,9 @@
  */
 package com.allcoware.actiontaximockup.ui.resourceholders;
 
+import com.allcoware.actiontaximockup.utils.MappedFormFactory;
 import com.allcoware.actiontaximockup.resources.RecurringTransaction;
-import com.allcoware.actiontaximockup.ui.guiinterfaces.JResourceForm;
+import com.allcoware.actiontaximockup.ui.JResourceForm;
 
 /**
  *

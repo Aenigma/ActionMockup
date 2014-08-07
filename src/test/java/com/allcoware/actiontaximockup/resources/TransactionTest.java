@@ -17,8 +17,8 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
-import com.allcoware.actiontaximockup.resources.beanutils.CustomMoneyConverter;
-import com.allcoware.actiontaximockup.resources.beanutils.InstantConverter;
+import com.allcoware.actiontaximockup.utils.CustomMoneyConverter;
+import com.allcoware.actiontaximockup.utils.InstantConverter;
 import java.beans.PropertyDescriptor;
 import java.time.Instant;
 import java.util.HashMap;

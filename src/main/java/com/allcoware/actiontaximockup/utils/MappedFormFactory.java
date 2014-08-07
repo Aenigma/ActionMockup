@@ -15,9 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.allcoware.actiontaximockup.ui.resourceholders;
+package com.allcoware.actiontaximockup.utils;
 
-import com.allcoware.actiontaximockup.ui.guiinterfaces.ResourceBuilder;
+import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
+import com.allcoware.actiontaximockup.ui.resources.ResourceBuilder;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Function;
@@ -31,7 +32,7 @@ import java.util.function.Supplier;
  * @param <R> the resource to be generated
  * @param <F> the form to be returned
  */
-class MappedFormFactory<R, F extends ResourceBuilder<R>> implements ResourceFormFactory<Long, R> {
+public class MappedFormFactory<R, F extends ResourceBuilder<R>> implements ResourceFormFactory<Long, R> {
 
     private final Map<Long, R> formMap;
     private transient long count;

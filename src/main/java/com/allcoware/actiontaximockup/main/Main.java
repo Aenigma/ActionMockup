@@ -1,6 +1,6 @@
 package com.allcoware.actiontaximockup.main;
 
-import com.allcoware.actiontaximockup.ui.guiinterfaces.DriverMenu;
+import com.allcoware.actiontaximockup.ui.resources.DriverMenu;
 import com.allcoware.actiontaximockup.ui.resourceholders.CabFormFactory;
 import com.allcoware.actiontaximockup.ui.resourceholders.DriverFormFactory;
 import com.allcoware.actiontaximockup.ui.resourceholders.RecurringTransactionFormFactory;

@@ -16,8 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.allcoware.actiontaximockup.ui.guiinterfaces;
+package com.allcoware.actiontaximockup.ui.resources;
 
+import com.allcoware.actiontaximockup.ui.JResourceForm;
 import com.allcoware.actiontaximockup.resources.Cab;
 import javax.swing.SwingUtilities;
 
