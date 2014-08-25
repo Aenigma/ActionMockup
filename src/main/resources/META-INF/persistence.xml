@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="com.allcoware_ActionTaxiMockup_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>com.allcoware.actiontaximockup.resources.Cab</class>
-    <class>com.allcoware.actiontaximockup.resources.Transaction</class>
-    <class>com.allcoware.actiontaximockup.resources.Driver</class>
-    <class>com.allcoware.actiontaximockup.resources.RecurringTransaction</class>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/actiontaxi"/>
-      <property name="javax.persistence.jdbc.user" value="test"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="test"/>
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-    </properties>
-  </persistence-unit>
+    <persistence-unit name="CLIENTDRIVER" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.allcoware.actiontaximockup.resources.Cab</class>
+        <class>com.allcoware.actiontaximockup.resources.Driver</class>
+        <class>com.allcoware.actiontaximockup.resources.RecurringTransaction</class>
+        <class>com.allcoware.actiontaximockup.resources.Transaction</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/actiontaxi;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="test"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="MEMORY" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.allcoware.actiontaximockup.resources.Cab</class>
+        <class>com.allcoware.actiontaximockup.resources.Driver</class>
+        <class>com.allcoware.actiontaximockup.resources.RecurringTransaction</class>
+        <class>com.allcoware.actiontaximockup.resources.Transaction</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:actiontaxi;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="test"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="LOCALEMBED" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.allcoware.actiontaximockup.resources.Cab</class>
+        <class>com.allcoware.actiontaximockup.resources.Driver</class>
+        <class>com.allcoware.actiontaximockup.resources.RecurringTransaction</class>
+        <class>com.allcoware.actiontaximockup.resources.Transaction</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:actiontaxi;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="test"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
 </persistence>
