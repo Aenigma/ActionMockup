@@ -50,7 +50,7 @@ import org.junit.runners.Parameterized.Parameters;
  * @author Kevin Raoofi
  */
 @RunWith(Parameterized.class)
-public class BeanTester<T> {
+public class BeanTest<T> {
 
     static BeanUtilsBean bub;
     static ObjectMapper om;
@@ -116,7 +116,7 @@ public class BeanTester<T> {
     T defaultObj;
     PropertyDescriptor[] pds;
 
-    public BeanTester(Class<T> clazz, T defaultObj) {
+    public BeanTest(Class<T> clazz, T defaultObj) {
         this.pds = PropertyUtils.getPropertyDescriptors(clazz);
         this.clazz = clazz;
         this.defaultObj = defaultObj;
