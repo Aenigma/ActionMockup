@@ -1,6 +1,6 @@
 package com.allcoware.actiontaximockup.ui;
 
-import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
+import com.allcoware.actiontaximockup.ResourceFormFactory;
 import javax.swing.JComponent;
 
 /*

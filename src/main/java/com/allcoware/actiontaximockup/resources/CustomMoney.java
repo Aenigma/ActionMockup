@@ -17,6 +17,9 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
@@ -47,7 +50,7 @@ import java.util.Objects;
  *
  * @author Kevin Raoofi
  */
-public final class CustomMoney implements Comparable<CustomMoney> {
+public final class CustomMoney implements Comparable<CustomMoney>, Serializable {
 
     /**
      * We only care about US Dollars
@@ -62,6 +65,7 @@ public final class CustomMoney implements Comparable<CustomMoney> {
      *
      * @param val String representation of the money value.
      */
+    @JsonCreator
     public CustomMoney(String val) {
         amount = new BigDecimal(val).setScale(scale, RoundingMode.HALF_EVEN);
     }
@@ -173,6 +177,7 @@ public final class CustomMoney implements Comparable<CustomMoney> {
      * @return String representation of the instance
      */
     @Override
+    @JsonValue
     public String toString() {
         StringBuilder rst = new StringBuilder();
         rst.append(amount.toString());

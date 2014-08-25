@@ -21,10 +21,14 @@ import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import org.apache.commons.beanutils.BeanUtilsBean;
 
 /**
+ * Classes implementing this should also consider extending
+ * {@link AbstractTableModel} as well.
+ *
  *
  * @author Kevin Raoofi
  * @param <R>
@@ -59,16 +63,6 @@ public interface BeanTableModel<R> extends TableModel {
 
     boolean addRow(int i, R rsrc);
 
-    /**
-     * Returns a copy of a {@link java.util.List<String>} representing a row
-     * which is not guaranteed to be modifiable nor a representative of the
-     * internally used row.
-     *
-     * @param row index of row in the table
-     * @return a row with each column represented by a String
-     */
-    List<String> getResourceListRow(int row);
-
     R getResourceRow(int row) throws ReflectiveOperationException;
 
     default Collection<R> getResources() {
@@ -89,8 +83,6 @@ public interface BeanTableModel<R> extends TableModel {
     }
 
     void removeRows(int... rows);
-
-    void setResourceListRow(int row, List<String> rsrc);
 
     void setResourceRow(int row, R rsrc) throws ReflectiveOperationException;
 

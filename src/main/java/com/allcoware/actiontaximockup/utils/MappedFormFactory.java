@@ -17,8 +17,8 @@
  */
 package com.allcoware.actiontaximockup.utils;
 
-import com.allcoware.actiontaximockup.ui.resourceholders.ResourceFormFactory;
-import com.allcoware.actiontaximockup.ui.resources.ResourceBuilder;
+import com.allcoware.actiontaximockup.ResourceFormFactory;
+import com.allcoware.actiontaximockup.ResourceBuilder;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Function;

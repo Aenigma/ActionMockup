@@ -17,25 +17,34 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * This class holds the information on a driver's transaction.
  *
  * @author alfred
  */
-public class Transaction {
+@Entity(name = "SINGLETRANSACTION")
+public class Transaction implements Serializable {
 
-    private java.time.Instant transactionInstant;
-    CustomMoney amount;
+    @Id
+    @GeneratedValue
+    private long id;
 
+    private Instant transactionInstant;
+    private CustomMoney amount;
+    
     /**
      * This method returns the transaction instant/time
      *
      * @return transaction instant
      */
-    public java.time.Instant getInstant() {
+    public Instant getInstant() {
         return transactionInstant;
     }
 
@@ -67,6 +76,12 @@ public class Transaction {
     }
 
     @Override
+    public String toString() {
+        return "Transaction{" + "transactionInstant=" + transactionInstant
+                + ", amount=" + amount + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.transactionInstant);
@@ -91,6 +106,13 @@ public class Transaction {
         }
         return true;
     }
-    
-    
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 }

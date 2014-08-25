@@ -17,26 +17,46 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * This class holds the main information for a driver being phone number, full
  * name, cap ID, and transactions.
  *
  * @author alfred
+ * @author Kevin Raoofi
  */
-public class Driver {
+@Entity
+public class Driver implements Serializable {
     
+    @Id
     private long number;
-    com.allcoware.actiontaximockup.resources.Cab cab;
-    CustomMoney money;
+    @OneToOne
+    private Cab cab;
+    private CustomMoney money;
     private String firstName;
     private String middleName;
     private String lastName;
     private String phone;
-    private Collection<Transaction> transaction;
+    
+
+    @OneToMany
+    private Collection<Transaction> transactions;
+    @OneToMany
     private Collection<RecurringTransaction> recurringTransactions;
 
+    public Driver() {
+        this.transactions = new ArrayList<>();
+        this.recurringTransactions = new ArrayList<>();
+    }
+    
     /**
      * Retrieves driver's ID number
      *
@@ -164,58 +184,118 @@ public class Driver {
     }
 
     /**
-     * Retrieves driver's transaction
+     * Retrieves driver's transactions
      *
-     * @return driver's transaction
+     * @return driver's transactions
      */
-    public Collection<Transaction> getTransaction() {
-        return transaction;
+    public Collection<Transaction> getTransactions() {
+        return transactions;
     }
 
     /**
-     * Sets driver's transaction
+     * Sets driver's transactions
      *
-     * @param transaction
+     * @param transactions
      */
-    public void setTransaction(Collection<Transaction> transaction) {
-        this.transaction = transaction;
+    public void setTransactions(Collection<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void addTransaction(Transaction t) {
-        transaction.add(t);
+        transactions.add(t);
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void removeTransaction(Transaction t) {
-        transaction.remove(t);
+        transactions.remove(t);
     }
 
     /**
-     * Retrieves driver's recurring transaction
+     * Retrieves driver's recurring transactions
      *
-     * @return driver's recurring transaction's
+     * @return driver's recurring transactions
      */
-    public Collection<RecurringTransaction> getReurringTransactions() {
+    public Collection<RecurringTransaction> getRecurringTransactions() {
         return recurringTransactions;
     }
 
     /**
-     * Sets driver's recurring transaction
+     * Sets driver's recurring transactions
      *
-     * @param recurringTransaction
+     * @param recurringTransactions
      */
-    public void setRecurringTransaction(Collection<RecurringTransaction> recurringTransaction) {
-        this.recurringTransactions = recurringTransaction;
+    public void setRecurringTransactions(Collection<RecurringTransaction> recurringTransactions) {
+        this.recurringTransactions = recurringTransactions;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void addRecurringTransaction(RecurringTransaction t) {
         recurringTransactions.add(t);
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void removeRecurringTransaction(RecurringTransaction t) {
         recurringTransactions.remove(t);
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" + "number=" + number + ", cab=" + cab + ", money=" +
+                money + ", firstName=" + firstName + ", middleName=" + middleName +
+                ", lastName=" + lastName + ", phone=" + phone + ", transactions=" +
+                transactions + ", recurringTransactions=" + recurringTransactions +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + (int) (this.number ^ (this.number >>> 32));
+        hash = 89 * hash + Objects.hashCode(this.cab);
+        hash = 89 * hash + Objects.hashCode(this.money);
+        hash = 89 * hash + Objects.hashCode(this.firstName);
+        hash = 89 * hash + Objects.hashCode(this.middleName);
+        hash = 89 * hash + Objects.hashCode(this.lastName);
+        hash = 89 * hash + Objects.hashCode(this.phone);
+        hash = 89 * hash + Objects.hashCode(this.transactions);
+        hash = 89 * hash + Objects.hashCode(this.recurringTransactions);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Driver other = (Driver) obj;
+        if (this.number != other.number) {
+            return false;
+        }
+        if (!Objects.equals(this.cab, other.cab)) {
+            return false;
+        }
+        if (!Objects.equals(this.money, other.money)) {
+            return false;
+        }
+        if (!Objects.equals(this.firstName, other.firstName)) {
+            return false;
+        }
+        if (!Objects.equals(this.middleName, other.middleName)) {
+            return false;
+        }
+        if (!Objects.equals(this.lastName, other.lastName)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.transactions, other.transactions)) {
+            return false;
+        }
+        if (!Objects.equals(this.recurringTransactions,
+                other.recurringTransactions)) {
+            return false;
+        }
+        return true;
     }
 }

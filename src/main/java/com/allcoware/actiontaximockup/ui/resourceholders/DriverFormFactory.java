@@ -21,7 +21,7 @@ import com.allcoware.actiontaximockup.utils.MappedFormFactory;
 import com.allcoware.actiontaximockup.resources.Driver;
 import com.allcoware.actiontaximockup.ui.resources.DriverForm;
 import com.allcoware.actiontaximockup.ui.JResourceForm;
-import com.allcoware.actiontaximockup.ui.resources.ResourceBuilder;
+import com.allcoware.actiontaximockup.ResourceBuilder;
 import java.util.Map;
 import java.util.TreeMap;
 

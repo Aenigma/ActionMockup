@@ -17,19 +17,28 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import static java.time.temporal.ChronoUnit.*;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * This class holds the information on a driver's recurring transaction's.
  *
  * @author alfred
  */
-public class RecurringTransaction {
+@Entity
+public class RecurringTransaction implements Serializable {
 
     // TODO: add suport for creating Transactions
+    @Id
+    @GeneratedValue
+    private long id;
     
     private Instant startingInstant;
     private Duration timeToPay;
@@ -106,10 +115,10 @@ public class RecurringTransaction {
     /**
      * Sets cap amount
      *
-     * @param capAmount
+     * @param amount
      */
-    public void setCapAmount(CustomMoney capAmount) {
-        this.capAmount = capAmount;
+    public void setAmount(CustomMoney amount) {
+        this.capAmount = amount;
     }
 
     /**
@@ -129,5 +138,56 @@ public class RecurringTransaction {
     public void setPeriodicAmount(CustomMoney periodicAmount) {
         this.periodicAmount = periodicAmount;
     }
+
+    @Override
+    public String toString() {
+        return "RecurringTransaction{" + "startingInstant=" + startingInstant +
+                ", timeToPay=" + timeToPay + ", capAmount=" + capAmount +
+                ", periodicAmount=" + periodicAmount + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.startingInstant);
+        hash = 79 * hash + Objects.hashCode(this.timeToPay);
+        hash = 79 * hash + Objects.hashCode(this.capAmount);
+        hash = 79 * hash + Objects.hashCode(this.periodicAmount);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RecurringTransaction other = (RecurringTransaction) obj;
+        if (!Objects.equals(this.startingInstant, other.startingInstant)) {
+            return false;
+        }
+        if (!Objects.equals(this.timeToPay, other.timeToPay)) {
+            return false;
+        }
+        if (!Objects.equals(this.capAmount, other.capAmount)) {
+            return false;
+        }
+        if (!Objects.equals(this.periodicAmount, other.periodicAmount)) {
+            return false;
+        }
+        return true;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    
 
 }

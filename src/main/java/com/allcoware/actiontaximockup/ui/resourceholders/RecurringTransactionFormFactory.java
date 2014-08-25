@@ -18,6 +18,7 @@
 package com.allcoware.actiontaximockup.ui.resourceholders;
 
 import com.allcoware.actiontaximockup.utils.MappedFormFactory;
+import com.allcoware.actiontaximockup.ui.resources.RecurringTransactionForm;
 import com.allcoware.actiontaximockup.resources.RecurringTransaction;
 import com.allcoware.actiontaximockup.ui.JResourceForm;
 
@@ -30,5 +31,6 @@ public class RecurringTransactionFormFactory extends MappedFormFactory<Recurring
 
     public RecurringTransactionFormFactory() {
         super(RecurringTransactionForm::new, RecurringTransaction::new);
+        
     }
 }

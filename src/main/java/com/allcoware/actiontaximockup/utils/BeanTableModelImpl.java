@@ -32,6 +32,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.table.AbstractTableModel;
 import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.Converter;
 import org.apache.commons.beanutils.PropertyUtils;
 
 /**
@@ -61,6 +62,18 @@ class BeanTableModelImpl<R> extends AbstractTableModel implements BeanTableModel
         return beanList;
     }
 
+    /**
+     * This method instantiates an object but forces {@link BeanUtilsBean} to
+     * populate it with empty fields. This is important as default values are
+     * handled by various {@link Converter}s and this method allows the
+     * converters to make the decision what default, uninitialized, values are.
+     *
+     * @param <R>   the resource class
+     * @param clazz explicit passing of resource class
+     * @param bub   used to invoke Converters
+     * @param pds   properties to populate with bub
+     * @return
+     */
     protected static <R> R initializeInstance(Class<R> clazz, BeanUtilsBean bub,
             PropertyDescriptor[] pds) {
         try {
@@ -151,7 +164,14 @@ class BeanTableModelImpl<R> extends AbstractTableModel implements BeanTableModel
         return resource;
     }
 
-    @Override
+    /**
+     * Returns a copy of a {@link java.util.List<String>} representing a row
+     * which is not guaranteed to be modifiable nor a representative of the
+     * internally used row.
+     *
+     * @param row index of row in the table
+     * @return a row with each column represented by a String
+     */
     public List<String> getResourceListRow(int row) {
         return Collections.unmodifiableList(table.get(row));
     }
@@ -162,7 +182,6 @@ class BeanTableModelImpl<R> extends AbstractTableModel implements BeanTableModel
         setResourceListRow(row, beanToList(rsrc, pds));
     }
 
-    @Override
     public void setResourceListRow(int row, List<String> rsrc) {
         table.set(row, rsrc);
     }

@@ -17,14 +17,20 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * This class currently only holds the Cab ID number, but it can be modified as
  * necessary later on
  *
  * @author alfred
  */
-public class Cab {
+@Entity
+public class Cab implements Serializable {
 
+    @Id
     private long cabID;
     
     public void setCabID(long cabID){
@@ -34,4 +40,32 @@ public class Cab {
     public long getCabID(){
         return cabID;
     }
+
+    @Override
+    public String toString() {
+        return "Cab{" + "cabID=" + cabID + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cab other = (Cab) obj;
+        if (this.cabID != other.cabID) {
+            return false;
+        }
+        return true;
+    }
+    
+    
   }

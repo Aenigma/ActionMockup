@@ -18,16 +18,23 @@
 
 package com.allcoware.actiontaximockup.ui.resources;
 
+import com.allcoware.actiontaximockup.resources.RecurringTransaction;
+import com.allcoware.actiontaximockup.ui.JResourceForm;
+
 /**
  *
  * @author alfred
  */
-public class RecurringTransactionForm extends javax.swing.JPanel {
+public class RecurringTransactionForm extends JResourceForm<RecurringTransaction> {
 
     /**
      * Creates new form RecurringTransactionForm
      */
     public RecurringTransactionForm() {
+        this(new RecurringTransaction());
+    }
+    
+    public RecurringTransactionForm(RecurringTransaction r) {
         initComponents();
     }
 
@@ -257,4 +264,14 @@ public class RecurringTransactionForm extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public boolean isReady() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public RecurringTransaction getResource() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
