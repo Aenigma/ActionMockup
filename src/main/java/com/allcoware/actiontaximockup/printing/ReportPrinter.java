@@ -5,6 +5,7 @@
  */
 package com.allcoware.actiontaximockup.printing;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JTable;
@@ -32,17 +33,17 @@ public class ReportPrinter {
             String middleName, String lastName, String phoneNum, JTable jTable1) {
 
         try {
-            String reportSource = null;
+            URL reportSource = null;
             if (type == -1) {
-                reportSource = "C:\\Users\\Reaper\\Documents\\NetBeansProjects\\TesterFactory\\build\\classes\\testerfactory\\exampleReport.jrxml";
+                reportSource = ReportPrinter.class.getResource("exampleReport.jrxml");
             } else if (type == 0) {
-                reportSource = "C:\\Users\\Reaper\\Documents\\NetBeansProjects\\TesterFactory\\build\\classes\\testerfactory\\driverReport.jrxml";
+                reportSource = ReportPrinter.class.getResource("driverReport.jrxml");
             } else if (type == 1) {
-                reportSource = "C:\\Users\\Reaper\\Documents\\NetBeansProjects\\TesterFactory\\build\\classes\\testerfactory\\cabReport.jrxml";
+                reportSource = ReportPrinter.class.getResource("cabReport.jrxml");
             } else if (type == 2) {
-                reportSource = "C:\\Users\\Reaper\\Documents\\NetBeansProjects\\TesterFactory\\build\\classes\\testerfactory\\transactionReport.jrxml";
+                reportSource = ReportPrinter.class.getResource("transactionReport.jrxml");
             } else if (type == 3) {
-                reportSource = "C:\\Users\\Reaper\\Documents\\NetBeansProjects\\TesterFactory\\build\\classes\\testerfactory\\reocurringTransactionReport.jrxml";
+                reportSource = ReportPrinter.class.getResource("reocurringTransactionReport.jrxml");
             }
             Map<String, Object> params = new HashMap<String, Object>();
 
@@ -54,7 +55,7 @@ public class ReportPrinter {
             params.put("lastName", lastName);
             params.put("phoneNum", phoneNum);
 
-            JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportSource.getPath());
 
             if (jTable1 != null) {
                 for (int i = 0; i < jTable1.getColumnCount(); i++) {
