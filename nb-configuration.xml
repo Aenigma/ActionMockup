@@ -24,6 +24,6 @@
         <de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterLocation/>
         <de-markiewb-netbeans-plugins-eclipse-formatter.enableFormatAsSaveAction>false</de-markiewb-netbeans-plugins-eclipse-formatter.enableFormatAsSaveAction>
         <netbeans.hint.licensePath>${project.basedir}/license-gplallcoware.txt</netbeans.hint.licensePath>
-        <netbeans.compile.on.save>none</netbeans.compile.on.save>
+        <netbeans.compile.on.save>all</netbeans.compile.on.save>
     </properties>
 </project-shared-configuration>

@@ -152,6 +152,7 @@ public class BeanTest<T> {
         String s = om.writeValueAsString(defaultObj);
         T obj = om.readValue(s, (Class<T>) defaultObj.getClass());
         System.out.println(s);
+        System.out.println(om.writeValueAsString(obj));
         System.out.println(obj);
 
         assertEquals(defaultObj, obj);

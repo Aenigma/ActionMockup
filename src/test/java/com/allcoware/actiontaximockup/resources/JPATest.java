@@ -17,21 +17,32 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 /**
  *
  * @author Kevin Raoofi
  */
-public class JPATest {
+@RunWith(Parameterized.class)
+public class JPATest<K, T> {
 
     static EntityManagerFactory factory = null;
     static final String persistenceUnitName = "MEMORY";
@@ -49,8 +60,18 @@ public class JPATest {
         factory = null;
     }
 
+    final Class<T> clazz;
+    final T defaultObj;
+    final K key;
+
     EntityManager em;
     EntityTransaction et;
+
+    public JPATest(Class<T> clazz, T defaultObj, K key) {
+        this.clazz = clazz;
+        this.defaultObj = defaultObj;
+        this.key = key;
+    }
 
     @Before
     public void setUpEntityManager() {
@@ -61,6 +82,9 @@ public class JPATest {
 
     @After
     public void cleanUpEntityManager() {
+        if (et.getRollbackOnly()) {
+            et.rollback();
+        }
         if (et.isActive()) {
             et.commit();
         }
@@ -68,11 +92,75 @@ public class JPATest {
         em = null;
     }
 
+    @Parameters
+    public static Collection<Object[]> constructorParameters() {
+        Collection<Object[]> params = new ArrayList<>();
+
+        Cab c = new Cab();
+        c.setCabID(100L);
+
+        Transaction t = new Transaction();
+        t.setId(101L);
+        t.setAmount(new CustomMoney(BigDecimal.ZERO));
+        //t.setInstant(Instant.MIN);
+
+        RecurringTransaction r = new RecurringTransaction(Instant.MIN,
+                Duration.ZERO,
+                new CustomMoney(BigDecimal.ZERO),
+                new CustomMoney(
+                        BigDecimal.ZERO));
+        //r.setId(102L);
+
+        Cab c2 = new Cab();
+        c2.setCabID(101L);
+
+        Driver d = new Driver();
+        d.setNumber(103L);
+        d.setCab(c2);
+        d.setFirstName("");
+        d.setMiddleName("");
+        d.setLastName("");
+        d.setMoney(new CustomMoney(BigDecimal.ZERO));
+        d.setPhone("");
+        d.setRecurringTransactions(Arrays.asList(r));
+        d.setTransactions(Arrays.asList(t));
+
+        params.add(new Object[]{Cab.class, c, 100L});
+        params.add(new Object[]{Transaction.class, t, 1L});
+        params.add(new Object[]{RecurringTransaction.class, r, 1L});
+        params.add(new Object[]{Driver.class, d, 103L});
+
+        return params;
+    }
+
     /**
      * Test is successful if setup and cleanup methods are successful
      */
-    @Test
     public void testBasicFunctionality() {
     }
 
+    public void testCab() {
+        Cab c1 = em.find(Cab.class, 158L);
+        assertEquals(null, c1);
+        c1 = new Cab();
+        c1.setCabID(158L);
+        em.persist(c1);
+        Cab c2 = em.find(Cab.class, 158L);
+
+        assertEquals(c1, c2);
+    }
+
+    @Test
+    public void test() {
+        System.out.println(clazz + " " + key + " " + defaultObj);
+        T o1 = em.find(clazz, key);
+        assertEquals(null, o1);
+        o1 = defaultObj;
+
+        em.persist(o1);
+        T o2 = em.find(clazz, key);
+
+        assertEquals(o1, o2);
+
+    }
 }

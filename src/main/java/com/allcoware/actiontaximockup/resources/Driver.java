@@ -21,6 +21,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -38,7 +40,7 @@ public class Driver implements Serializable {
     
     @Id
     private long number;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST})
     private Cab cab;
     private CustomMoney money;
     private String firstName;
@@ -47,9 +49,12 @@ public class Driver implements Serializable {
     private String phone;
     
 
-    @OneToMany
+    @ElementCollection(targetClass = Transaction.class)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Collection<Transaction> transactions;
-    @OneToMany
+    
+    @ElementCollection(targetClass = RecurringTransaction.class)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Collection<RecurringTransaction> recurringTransactions;
 
     public Driver() {

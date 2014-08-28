@@ -25,6 +25,10 @@ import java.math.RoundingMode;
 import java.util.Currency;
 import java.util.Locale;
 import java.util.Objects;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
 
 /**
  * <p>
@@ -43,14 +47,14 @@ import java.util.Objects;
  * little functionality, may make it slightly easier to port later.
  * </p>
  * <p>
- * This class is {@code final} which means that it should not be extended.
- * Additionally, it is immutable as is the {@code BigDecimal} that is being
- * used.
+ * This class should not be extended. It acts as a safe wrapper around
+ * {@code BigDecimal} that is being used to represent a currency format.
  * </p>
  *
  * @author Kevin Raoofi
  */
-public final class CustomMoney implements Comparable<CustomMoney>, Serializable {
+@Embeddable
+public class CustomMoney implements Comparable<CustomMoney>, Serializable {
 
     /**
      * We only care about US Dollars
@@ -58,7 +62,24 @@ public final class CustomMoney implements Comparable<CustomMoney>, Serializable 
     private static final Currency usd = Currency.getInstance(Locale.US);
 
     private static final int scale = 2;
-    private final BigDecimal amount;
+
+    private static final RoundingMode rm = RoundingMode.HALF_EVEN;
+
+    /**
+     * Utility method to set scale to {@link CustomMoney#scale} and rounding
+     * mode to {@link CustomMoney#rm}.
+     *
+     * @param amount Original BigDecimal
+     * @return BigDecimal with scale and rounding mode explicitly set
+     */
+    private static BigDecimal transformBigDecimal(BigDecimal amount) {
+        return amount.setScale(scale, rm);
+    }
+
+    /**
+     * Internal representation of currency.
+     */
+    private BigDecimal amount;
 
     /**
      * Creates an instance of {@link CustomMoney}
@@ -81,6 +102,21 @@ public final class CustomMoney implements Comparable<CustomMoney>, Serializable 
          * CustomMoney. This may mean, however, that the instance's internal
          * BigDecimal does not equal the original BigDecimal.
          */
+        this.amount = transformBigDecimal(amount);
+    }
+
+    /**
+     * No-Arg constructor for JPA and beans
+     */
+    protected CustomMoney() {
+    }
+
+    @Access(AccessType.PROPERTY)
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
         this.amount = amount.setScale(scale, RoundingMode.HALF_EVEN);
     }
 

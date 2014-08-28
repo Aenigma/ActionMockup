@@ -17,12 +17,20 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * This class holds the information on a driver's transaction.
@@ -30,15 +38,19 @@ import javax.persistence.Id;
  * @author alfred
  */
 @Entity(name = "SINGLETRANSACTION")
+@Access(value = AccessType.FIELD)
 public class Transaction implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
 
+    @Transient
     private Instant transactionInstant;
+
+    @Embedded
     private CustomMoney amount;
-    
+
     /**
      * This method returns the transaction instant/time
      *
@@ -55,6 +67,20 @@ public class Transaction implements Serializable {
      */
     public void setInstant(Instant transactionInstant) {
         this.transactionInstant = transactionInstant;
+    }
+
+    @Access(AccessType.PROPERTY)
+    @Column(name = "TRANSACTIONINSTANT")
+    @JsonIgnore
+    public Timestamp getJPATime() {
+        if (transactionInstant == null) {
+            return null;
+        }
+        return Timestamp.from(transactionInstant);
+    }
+
+    public void setJPATime(Timestamp d) {
+        this.transactionInstant = d.toInstant();
     }
 
     /**

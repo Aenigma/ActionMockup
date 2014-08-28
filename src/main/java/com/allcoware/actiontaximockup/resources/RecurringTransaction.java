@@ -23,6 +23,10 @@ import java.time.Duration;
 import java.time.Instant;
 import static java.time.temporal.ChronoUnit.*;
 import java.util.Objects;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -39,10 +43,16 @@ public class RecurringTransaction implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-    
+
     private Instant startingInstant;
     private Duration timeToPay;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "amount", column = @Column(name = "CAPAMOUNT"))})
     private CustomMoney capAmount;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "amount", column = @Column(name = "PERIODICAMOUNT"))})
     private CustomMoney periodicAmount;
 
     /**
@@ -50,18 +60,20 @@ public class RecurringTransaction implements Serializable {
      * pay, and $0 paid periodically
      */
     public RecurringTransaction() {
-        this(Instant.now(), Duration.of(1, DAYS), new CustomMoney(new BigDecimal(0)), new CustomMoney(new BigDecimal(0)));
+        this(Instant.now(), Duration.of(1, DAYS), new CustomMoney(
+                new BigDecimal(0)), new CustomMoney(new BigDecimal(0)));
     }
 
     /**
      * Creates an instance with the specified properties
-     * 
+     *
      * @param startingInstant when payments should start
-     * @param timeToPay time to wait until the next payment is demanded
-     * @param capAmount maximum amount to pay
-     * @param periodicAmount time to wait until the next payment is scheduled
+     * @param timeToPay       time to wait until the next payment is demanded
+     * @param capAmount       maximum amount to pay
+     * @param periodicAmount  time to wait until the next payment is scheduled
      */
-    public RecurringTransaction(Instant startingInstant, Duration timeToPay, CustomMoney capAmount, CustomMoney periodicAmount) {
+    public RecurringTransaction(Instant startingInstant, Duration timeToPay,
+            CustomMoney capAmount, CustomMoney periodicAmount) {
         this.startingInstant = startingInstant;
         this.timeToPay = timeToPay;
         this.capAmount = capAmount;
@@ -86,9 +98,10 @@ public class RecurringTransaction implements Serializable {
         this.startingInstant = startingInstant;
     }
 
-    /** 
+    /**
      * Gets time to wait until the next payment is demanded
-     * @return time to wait until the next payment is demanded 
+     *
+     * @return time to wait until the next payment is demanded
      */
     public Duration getTimeToPay() {
         return timeToPay;
@@ -96,13 +109,13 @@ public class RecurringTransaction implements Serializable {
 
     /**
      * Sets time to wait until the next payment is demanded
-     * 
+     *
      * @param timeToPay time to wait until the next payment is demanded
      */
     public void setTimeToPay(Duration timeToPay) {
         this.timeToPay = timeToPay;
     }
-    
+
     /**
      * Retrieves cap amount
      *
@@ -141,9 +154,9 @@ public class RecurringTransaction implements Serializable {
 
     @Override
     public String toString() {
-        return "RecurringTransaction{" + "startingInstant=" + startingInstant +
-                ", timeToPay=" + timeToPay + ", capAmount=" + capAmount +
-                ", periodicAmount=" + periodicAmount + '}';
+        return "RecurringTransaction{" + "startingInstant=" + startingInstant
+                + ", timeToPay=" + timeToPay + ", capAmount=" + capAmount
+                + ", periodicAmount=" + periodicAmount + '}';
     }
 
     @Override
@@ -187,7 +200,5 @@ public class RecurringTransaction implements Serializable {
     public void setId(long id) {
         this.id = id;
     }
-    
-    
 
 }
