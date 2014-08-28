@@ -11,7 +11,7 @@ import javax.swing.JFrame;
  * @author alfred
  */
 public class Main {
-/*
+
     public static void main(String[] args) {
  
         /*
@@ -24,11 +24,10 @@ public class Main {
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //*/
         
-        
-        
+        System.out.println("working");
         
         
     }
-//*/
 }
