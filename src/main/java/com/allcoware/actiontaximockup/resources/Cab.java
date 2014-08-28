@@ -32,12 +32,29 @@ public class Cab implements Serializable {
 
     @Id
     private long cabID;
-    
-    public void setCabID(long cabID){
-        this.cabID=cabID;
+
+    public Cab() {
     }
-    
-    public long getCabID(){
+
+    public Cab(long cabID) {
+        this.cabID = cabID;
+    }
+
+    /**
+     * Copy constructor. Values created from this object should be a deep copy
+     * and when {@link #equals(java.lang.Object)} is used, return true.
+     *
+     * @param c
+     */
+    public Cab(Cab c) {
+        this.cabID = c.cabID;
+    }
+
+    public void setCabID(long cabID) {
+        this.cabID = cabID;
+    }
+
+    public long getCabID() {
         return cabID;
     }
 
@@ -66,6 +83,5 @@ public class Cab implements Serializable {
         }
         return true;
     }
-    
-    
-  }
+
+}

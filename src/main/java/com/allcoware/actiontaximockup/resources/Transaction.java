@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -50,6 +49,20 @@ public class Transaction implements Serializable {
 
     @Embedded
     private CustomMoney amount;
+
+    public Transaction() {
+    }
+
+    public Transaction(Instant transactionInstant, CustomMoney amount) {
+        this.transactionInstant = transactionInstant;
+        this.amount = amount;
+    }
+
+    public Transaction(Transaction t) {
+        this.id = t.id;
+        this.amount = t.amount;
+        this.transactionInstant = t.transactionInstant;
+    }
 
     /**
      * This method returns the transaction instant/time

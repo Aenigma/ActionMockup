@@ -42,7 +42,7 @@ import org.junit.runners.Parameterized.Parameters;
  * @author Kevin Raoofi
  */
 @RunWith(Parameterized.class)
-public class JPATest<K, T> {
+public class JpaIT<K, T> {
 
     static EntityManagerFactory factory = null;
     static final String persistenceUnitName = "MEMORY";
@@ -67,7 +67,7 @@ public class JPATest<K, T> {
     EntityManager em;
     EntityTransaction et;
 
-    public JPATest(Class<T> clazz, T defaultObj, K key) {
+    public JpaIT(Class<T> clazz, T defaultObj, K key) {
         this.clazz = clazz;
         this.defaultObj = defaultObj;
         this.key = key;
@@ -82,6 +82,7 @@ public class JPATest<K, T> {
 
     @After
     public void cleanUpEntityManager() {
+        et.setRollbackOnly();
         if (et.getRollbackOnly()) {
             et.rollback();
         }
@@ -100,11 +101,11 @@ public class JPATest<K, T> {
         c.setCabID(100L);
 
         Transaction t = new Transaction();
-        t.setId(101L);
         t.setAmount(new CustomMoney(BigDecimal.ZERO));
-        //t.setInstant(Instant.MIN);
+        t.setInstant(Instant.now());
+        //t.setId(101L);
 
-        RecurringTransaction r = new RecurringTransaction(Instant.MIN,
+        RecurringTransaction r = new RecurringTransaction(Instant.now(),
                 Duration.ZERO,
                 new CustomMoney(BigDecimal.ZERO),
                 new CustomMoney(
@@ -125,10 +126,12 @@ public class JPATest<K, T> {
         d.setRecurringTransactions(Arrays.asList(r));
         d.setTransactions(Arrays.asList(t));
 
-        params.add(new Object[]{Cab.class, c, 100L});
-        params.add(new Object[]{Transaction.class, t, 1L});
-        params.add(new Object[]{RecurringTransaction.class, r, 1L});
-        params.add(new Object[]{Driver.class, d, 103L});
+        params.add(new Object[]{Cab.class, new Cab(c), c.getCabID()});
+        params.add(
+                new Object[]{Transaction.class, new Transaction(t), t.getId()});
+        params.add(new Object[]{RecurringTransaction.class,
+            new RecurringTransaction(r), r.getId()});
+        params.add(new Object[]{Driver.class, new Driver(d), d.getNumber()});
 
         return params;
     }
@@ -158,7 +161,9 @@ public class JPATest<K, T> {
         o1 = defaultObj;
 
         em.persist(o1);
-        T o2 = em.find(clazz, key);
+
+        T o2 = em
+                .find(clazz, factory.getPersistenceUnitUtil().getIdentifier(o1));
 
         assertEquals(o1, o2);
 

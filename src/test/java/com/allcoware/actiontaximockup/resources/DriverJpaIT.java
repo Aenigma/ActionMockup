@@ -42,7 +42,7 @@ import org.junit.Test;
  *
  * @author Kevin Raoofi
  */
-public class DriverJPATest {
+public class DriverJpaIT {
 
     static EntityManagerFactory factory = null;
     static final String persistenceUnitName = "MEMORY";
@@ -67,7 +67,7 @@ public class DriverJPATest {
         t.setInstant(Instant.now());
         //t.setId(101L);
         
-        RecurringTransaction r = new RecurringTransaction(Instant.MIN,
+        RecurringTransaction r = new RecurringTransaction(Instant.now(),
                 Duration.ZERO,
                 new CustomMoney(BigDecimal.ZERO),
                 new CustomMoney(
@@ -88,10 +88,10 @@ public class DriverJPATest {
         d.setRecurringTransactions(Arrays.asList(r));
         d.setTransactions(Arrays.asList(t));
 
-        sampleCab = c;
-        sampleDriver = d;
-        sampleRecurringTransaction = r;
-        sampleTransaction = t;
+        sampleCab = new Cab(c);
+        sampleDriver = new Driver(d);
+        sampleRecurringTransaction = new RecurringTransaction(r);
+        sampleTransaction = new Transaction(t);
 
         rand = new Random();
 
@@ -116,6 +116,7 @@ public class DriverJPATest {
 
     @After
     public void cleanUpEntityManager() {
+        et.setRollbackOnly();
         if (et.getRollbackOnly()) {
             et.rollback();
         }
@@ -126,6 +127,7 @@ public class DriverJPATest {
         em = null;
     }
 
+    @Test
     public void testDriverBasic() {
         long id = rand.nextLong();
 
@@ -152,6 +154,7 @@ public class DriverJPATest {
         System.out.println(sampleTransaction.getId() + " " + sampleTransaction);
         //System.out.println(t.getId() + " " + t);
         em.persist(o1);
+        
         Driver o2 = em.find(Driver.class, id);
 
         assertEquals(o1, o2);

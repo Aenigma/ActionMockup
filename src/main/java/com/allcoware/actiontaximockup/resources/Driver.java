@@ -37,7 +37,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Driver implements Serializable {
-    
+
     @Id
     private long number;
     @OneToOne(cascade = {CascadeType.PERSIST})
@@ -47,12 +47,11 @@ public class Driver implements Serializable {
     private String middleName;
     private String lastName;
     private String phone;
-    
 
     @ElementCollection(targetClass = Transaction.class)
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Collection<Transaction> transactions;
-    
+
     @ElementCollection(targetClass = RecurringTransaction.class)
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Collection<RecurringTransaction> recurringTransactions;
@@ -61,7 +60,25 @@ public class Driver implements Serializable {
         this.transactions = new ArrayList<>();
         this.recurringTransactions = new ArrayList<>();
     }
-    
+
+    /**
+     * Copy constructor. Values created from this object should be a deep copy
+     * and when {@link #equals(java.lang.Object)} is used, return true.
+     *
+     * @param d
+     */
+    public Driver(Driver d) {
+        this.cab = d.cab;
+        this.firstName = d.firstName;
+        this.lastName = d.lastName;
+        this.middleName = d.middleName;
+        this.money = d.money;
+        this.number = d.number;
+        this.phone = d.phone;
+        this.recurringTransactions = new ArrayList<>(d.recurringTransactions);
+        this.transactions = new ArrayList<>(d.transactions);
+    }
+
     /**
      * Retrieves driver's ID number
      *
@@ -85,7 +102,7 @@ public class Driver implements Serializable {
      *
      * @return driver's Cab
      */
-    public com.allcoware.actiontaximockup.resources.Cab getCab() {
+    public Cab getCab() {
         return cab;
     }
 
@@ -94,7 +111,7 @@ public class Driver implements Serializable {
      *
      * @param cab
      */
-    public void setCab(com.allcoware.actiontaximockup.resources.Cab cab) {
+    public void setCab(Cab cab) {
         this.cab = cab;
     }
 
@@ -194,7 +211,7 @@ public class Driver implements Serializable {
      * @return driver's transactions
      */
     public Collection<Transaction> getTransactions() {
-        return transactions;
+        return new ArrayList<>(transactions);
     }
 
     /**
@@ -203,7 +220,7 @@ public class Driver implements Serializable {
      * @param transactions
      */
     public void setTransactions(Collection<Transaction> transactions) {
-        this.transactions = transactions;
+        this.transactions = new ArrayList<>(transactions);
     }
 
     public void addTransaction(Transaction t) {
@@ -220,7 +237,7 @@ public class Driver implements Serializable {
      * @return driver's recurring transactions
      */
     public Collection<RecurringTransaction> getRecurringTransactions() {
-        return recurringTransactions;
+        return new ArrayList<>(recurringTransactions);
     }
 
     /**
@@ -228,8 +245,9 @@ public class Driver implements Serializable {
      *
      * @param recurringTransactions
      */
-    public void setRecurringTransactions(Collection<RecurringTransaction> recurringTransactions) {
-        this.recurringTransactions = recurringTransactions;
+    public void setRecurringTransactions(
+            Collection<RecurringTransaction> recurringTransactions) {
+        this.recurringTransactions = new ArrayList<>(recurringTransactions);
     }
 
     public void addRecurringTransaction(RecurringTransaction t) {
@@ -242,11 +260,11 @@ public class Driver implements Serializable {
 
     @Override
     public String toString() {
-        return "Driver{" + "number=" + number + ", cab=" + cab + ", money=" +
-                money + ", firstName=" + firstName + ", middleName=" + middleName +
-                ", lastName=" + lastName + ", phone=" + phone + ", transactions=" +
-                transactions + ", recurringTransactions=" + recurringTransactions +
-                '}';
+        return "Driver{" + "number=" + number + ", cab=" + cab + ", money="
+                + money + ", firstName=" + firstName + ", middleName="
+                + middleName + ", lastName=" + lastName + ", phone=" + phone
+                + ", transactions=" + transactions + ", recurringTransactions="
+                + recurringTransactions + '}';
     }
 
     @Override

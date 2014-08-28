@@ -17,12 +17,16 @@
  */
 package com.allcoware.actiontaximockup.resources;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.Instant;
 import static java.time.temporal.ChronoUnit.*;
 import java.util.Objects;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -30,6 +34,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * This class holds the information on a driver's recurring transaction's.
@@ -37,6 +42,7 @@ import javax.persistence.Id;
  * @author alfred
  */
 @Entity
+@Access(AccessType.FIELD)
 public class RecurringTransaction implements Serializable {
 
     // TODO: add suport for creating Transactions
@@ -44,8 +50,12 @@ public class RecurringTransaction implements Serializable {
     @GeneratedValue
     private long id;
 
+    @Transient
     private Instant startingInstant;
+
+    @Transient
     private Duration timeToPay;
+
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "amount", column = @Column(name = "CAPAMOUNT"))})
@@ -80,12 +90,22 @@ public class RecurringTransaction implements Serializable {
         this.periodicAmount = periodicAmount;
     }
 
+    public RecurringTransaction(RecurringTransaction r) {
+        this.id = r.id;
+        this.startingInstant = r.startingInstant;
+        this.timeToPay = r.timeToPay;
+        this.capAmount = r.capAmount;
+        this.periodicAmount = r.periodicAmount;
+    }
+    
+    
+
     /**
      * Retrieves stating instant/time
      *
      * @return starting instant
      */
-    public java.time.Instant getStartingInstant() {
+    public Instant getStartingInstant() {
         return startingInstant;
     }
 
@@ -96,6 +116,20 @@ public class RecurringTransaction implements Serializable {
      */
     public void setStartingInstant(Instant startingInstant) {
         this.startingInstant = startingInstant;
+    }
+
+    @Access(AccessType.PROPERTY)
+    @Column(name = "STARTINGTIME")
+    @JsonIgnore
+    public Timestamp getJPAStartingTime() {
+        if (startingInstant == null) {
+            return null;
+        }
+        return Timestamp.from(startingInstant);
+    }
+
+    public void setJPAStartingTime(Timestamp d) {
+        this.startingInstant = d.toInstant();
     }
 
     /**
@@ -114,6 +148,17 @@ public class RecurringTransaction implements Serializable {
      */
     public void setTimeToPay(Duration timeToPay) {
         this.timeToPay = timeToPay;
+    }
+
+    @Access(AccessType.PROPERTY)
+    @Column(name = "TIMETOPAY")
+    @JsonIgnore
+    public long getMillisToPay() {
+        return timeToPay.toMillis();
+    }
+
+    public void setMillisToPay(long millis) {
+        this.timeToPay = Duration.ofMillis(millis);
     }
 
     /**
