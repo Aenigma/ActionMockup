@@ -17,16 +17,17 @@ public class Main {
         /*
         DriverFormFactory driverForm = new DriverFormFactory();
         CabFormFactory cabForm = new CabFormFactory();
-        Container container = frame.getContentPane();
-        container.add(new DriverMenu(frame, container, driverForm, cabForm));        
-        //
+               
+        //*/
         
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //*/
+        frame.setVisible(true);
         
-        System.out.println("working");
+        Container container = frame.getContentPane();
+        container.add(new MainHub()); 
+        
         
         
     }
