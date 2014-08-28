@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-/*import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -24,13 +24,10 @@ import net.sf.jasperreports.view.JasperViewer;
 public class ReportPrinter {
 
     /**
-     * This method/constructor designates the type of form the user wants to print and creates a print.
-     * 
+     * This method/constructor designates the type of form the user wants to
+     * print and creates a print.
+     *
      */
-   
-    
-    /*
-    
     public ReportPrinter(int type, String pageTitle, String driverNum, String cabID, String firstName,
             String middleName, String lastName, String phoneNum, JTable jTable1) {
 
@@ -79,5 +76,4 @@ public class ReportPrinter {
             //ex.printStackTrace();
         }
     }
-//*/
 }
