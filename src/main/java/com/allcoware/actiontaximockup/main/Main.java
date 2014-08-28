@@ -1,8 +1,5 @@
 package com.allcoware.actiontaximockup.main;
 
-import com.allcoware.actiontaximockup.ui.resources.DriverMenu;
-import com.allcoware.actiontaximockup.ui.resourceholders.CabFormFactory;
-import com.allcoware.actiontaximockup.ui.resourceholders.DriverFormFactory;
 import java.awt.Container;
 import javax.swing.JFrame;
 
@@ -23,6 +20,7 @@ public class Main {
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
         frame.setVisible(true);
         
         Container container = frame.getContentPane();
