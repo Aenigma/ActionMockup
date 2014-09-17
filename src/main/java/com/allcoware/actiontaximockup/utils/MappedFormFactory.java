@@ -17,10 +17,11 @@
  */
 package com.allcoware.actiontaximockup.utils;
 
+import com.allcoware.actiontaximockup.MappedResourceManager;
 import com.allcoware.actiontaximockup.ResourceFormFactory;
 import com.allcoware.actiontaximockup.ResourceBuilder;
+import com.allcoware.actiontaximockup.ResourceManager;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -34,32 +35,48 @@ import java.util.function.Supplier;
  */
 public class MappedFormFactory<R, F extends ResourceBuilder<R>> implements ResourceFormFactory<Long, R> {
 
-    private final Map<Long, R> formMap;
-    private transient long count;
+    private long count;
     protected final Function<R, F> resourceFormFactory;
     protected final Supplier<R> resourceFactory;
+
+    ResourceManager<Long, R> rm;
 
     public MappedFormFactory(
             Function<R, F> resourceFormFactory,
             Supplier<R> resourceFactory) {
-        this.formMap = new TreeMap<>();
         this.count = 0;
         this.resourceFormFactory = resourceFormFactory;
         this.resourceFactory = resourceFactory;
+
+        rm = new MappedResourceManager<>(resourceFactory, (x) -> count);
     }
 
     @Override
     public F getForm(Long key) {
-        return resourceFormFactory.apply(formMap.get(key));
+        R rsrc = rm.read(key);
+        return rsrc != null ? resourceFormFactory.apply(rsrc) : null;
     }
 
     @Override
     public F makeNewForm() {
-        this.formMap.put(count, resourceFactory.get());
-        return resourceFormFactory.apply(this.formMap.get(count++));
+        R rsrc = resourceFactory.get();
+        rm.create(rsrc);
+        return resourceFormFactory.apply(rsrc);
     }
 
     public Map<Long, R> getMap() {
-        return formMap;
+        MappedResourceManager<R> mrm = (MappedResourceManager<R>) rm;
+        return mrm.getMap();
     }
+
+    @Override
+    public void remove(Long key) {
+        rm.delete(rm.read(key));
+    }
+
+    @Override
+    public boolean exists(Long key) {
+        return rm.contains(key);
+    }
+
 }
