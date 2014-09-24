@@ -1,7 +1,6 @@
 package com.allcoware.actiontaximockup.main;
 
 import java.awt.Container;
-import java.net.URL;
 import javax.swing.JFrame;
 
 /**
