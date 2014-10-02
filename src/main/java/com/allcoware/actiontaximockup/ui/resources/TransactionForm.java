@@ -64,6 +64,7 @@ public class TransactionForm extends JResourceForm<Transaction> {
         jTextField6 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextField7 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +101,8 @@ public class TransactionForm extends JResourceForm<Transaction> {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Comment"));
         jScrollPane1.setViewportView(jTextField7);
+
+        jButton2.setText("Delete Form");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,7 +142,8 @@ public class TransactionForm extends JResourceForm<Transaction> {
                             .addComponent(jScrollPane1))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -171,7 +175,9 @@ public class TransactionForm extends JResourceForm<Transaction> {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -191,6 +197,7 @@ public class TransactionForm extends JResourceForm<Transaction> {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
